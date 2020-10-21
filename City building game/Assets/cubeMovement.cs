@@ -19,28 +19,14 @@ public class cubeMovement : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
         {
-            /*if ()
-            {
-
-            } 
-            else 
-            {
-            
-            }
-
-            if ()
-            {
-
-            }
-            else
-            {
-
-            }*/
-            Debug.Log(((int)(hit.point.x)) % (10));
-
 
             this.transform.position = new Vector3(hit.point.x,1,hit.point.z) ;
         }
-        
+
+        if (Input.GetMouseButtonDown(0)) 
+        {
+            enabled = false; 
+        }
+
     }
 }
