@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class ClickAction : MonoBehaviour, IPointerClickHandler
 {
     public GameObject cube;
-    public GameObject 
+    public GameObject spawnMark;
 
         public void OnPointerClick(PointerEventData eventData)
         {
