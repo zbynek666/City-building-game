@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -20,7 +21,7 @@ public class cubeMovement : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
 
-            this.transform.position = new Vector3(hit.point.x,1,hit.point.z) ;
+            this.transform.position = new Vector3(Mathf.Round(hit.point.x),1,Mathf.Round(hit.point.z)) ;
         }
 
         if (Input.GetMouseButtonDown(0)) 
