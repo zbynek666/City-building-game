@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 
 public class cubeMovement : MonoBehaviour
 {
+    public GameObject building;
     private RaycastHit hit;
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,12 @@ public class cubeMovement : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0)) 
         {
-            enabled = false; 
+            Instantiate(building, this.transform.position, this.transform.rotation);
+            if (!(Input.GetKey(KeyCode.LeftShift)))
+            {
+                enabled = false;
+            }
+
         }
 
     }
