@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Road : MonoBehaviour
+public class blueprint_script : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
