@@ -27,14 +27,23 @@ public class blueprint_script : MonoBehaviour
         if (Physics.Raycast(ray, out hit,5000.0f,1))
         {
             transform.position = hit.point;
-            Debug.Log(hit.point);
         }
 
         if (Input.GetMouseButton(0))
         {
 
             Instantiate(prefab, transform.position, transform.rotation);
-            Destroy(gameObject);
+            //nont know why it doesnt work
+            if (Input.GetKeyDown("left shift"))
+            {
+                Debug.Log("kys");
+            }
+            else 
+            {
+                Destroy(gameObject);
+            }
+            
         }
+
     }
 }
