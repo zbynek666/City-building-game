@@ -26,7 +26,10 @@ public class blueprint_script : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit,5000.0f,1))
         {
-            transform.position = hit.point;
+            transform.position = new Vector3(
+                Mathf.Round(hit.point.x / 10.0f) * 10.0f,
+                hit.point.y,
+                Mathf.Round(hit.point.z / 10.0f) * 10.0f);
         }
 
         if (Input.GetMouseButton(0))
