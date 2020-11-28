@@ -5,8 +5,12 @@ using UnityEngine;
 
 public class RoadBlueprintScript : MonoBehaviour
 {
-    private int roadStart = -5000;
-    private int roadEnd = -5000;
+    private Vector3? roadStart = null;
+    private Vector3? roadEnd = null;
+    public GameObject prefab;
+    RaycastHit hit;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,24 +21,47 @@ public class RoadBlueprintScript : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetMouseButton(0) && roadStart != -5000)
+        move();
+
+        if (Input.GetMouseButton(0))
         {
-            setSrartPoint();
+            Debug.Log(roadStart);
         }
-        else if(Input.GetMouseButton(0) && roadEnd != -5000)
+
+        if (Input.GetMouseButtonDown(0) && roadStart == null)
         {
+            roadStart = transform.position;
+        }
+        else if(Input.GetMouseButtonDown(0) && roadEnd == null)
+        {
+            roadEnd = transform.position;
             buildRoad();
         }
 
     }
-
-    private void buildRoad()
+    void move() 
     {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out hit, 5000.0f, 1))
+        {
+            transform.position = new Vector3(
+                Mathf.Round(hit.point.x / 10.0f) * 10.0f,
+                hit.point.y,
+                Mathf.Round(hit.point.z / 10.0f) * 10.0f);
+        }
 
     }
 
-    private void setSrartPoint()
-    {
+     void buildRoad()
+     {
+        Instantiate(prefab, (Vector3)roadStart, Quaternion.Euler(new Vector3(0,90,0)));
+        Destroy(gameObject);
 
+     }
+
+    float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
+    {
+        return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
     }
 }
