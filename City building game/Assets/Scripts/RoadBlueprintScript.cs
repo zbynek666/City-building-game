@@ -9,6 +9,8 @@ public class RoadBlueprintScript : MonoBehaviour
     private Vector3? roadEnd = null;
     public GameObject prefab;
     RaycastHit hit;
+    GameObject clone;
+
 
 
     // Start is called before the first frame update
@@ -31,6 +33,8 @@ public class RoadBlueprintScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && roadStart == null)
         {
             roadStart = transform.position;
+            clone = Instantiate(prefab, (Vector3)roadStart, transform.rotation);
+
         }
         else if(Input.GetMouseButtonDown(0) && roadEnd == null)
         {
@@ -55,13 +59,16 @@ public class RoadBlueprintScript : MonoBehaviour
 
      void buildRoad()
      {
-        Instantiate(prefab, (Vector3)roadStart, Quaternion.Euler(new Vector3(0,90,0)));
+        Destroy(clone);
+        Instantiate(prefab, (Vector3)roadStart, Quaternion.Euler(new Vector3(0,AngleBetweenTwoPoints((Vector3)roadStart,(Vector3) roadEnd),0)));
         Destroy(gameObject);
 
      }
 
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
     {
-        return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
+
+        return(Mathf.Round ((Mathf.Atan2(a.z - b.z, a.x - b.x) * Mathf.Rad2Deg)/90))*90;
+        
     }
 }
