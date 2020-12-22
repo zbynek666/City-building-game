@@ -132,7 +132,6 @@ GameObject:
   - component: {fileID: 298513628}
   - component: {fileID: 298513632}
   - component: {fileID: 298513631}
-  - component: {fileID: 298513630}
   - component: {fileID: 298513629}
   m_Layer: 5
   m_Name: Image (1)
@@ -203,7 +202,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 298513630}
+      - m_Target: {fileID: 0}
         m_MethodName: spawnBlueprint
         m_Mode: 1
         m_Arguments:
@@ -214,19 +213,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &298513630
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 298513627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03f6da4389848bb40899701d839b1d89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 8959540075350396719, guid: 6e8b95e89a0228443a727b571b6faaef, type: 3}
 --- !u!114 &298513631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,8 +279,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 371807314}
+  - component: {fileID: 371807315}
   m_Layer: 0
-  m_Name: Koad
+  m_Name: testing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -308,12 +295,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 371807313}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 84.27321, y: 115.40135, z: 113.62046}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &371807315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371807313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a203b5c0291d79e4c8b225d7ae920cb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  p: {fileID: 2428701413868130471, guid: c780b378d02f37e42ae770e55bc92e8c, type: 3}
 --- !u!1 &633452736
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,7 +497,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777662398}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.02, y: 118, z: 0.19453621}
+  m_LocalPosition: {x: -0.02, y: 118, z: 607}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 963194228}
@@ -541,7 +541,6 @@ GameObject:
   - component: {fileID: 786479625}
   - component: {fileID: 786479629}
   - component: {fileID: 786479628}
-  - component: {fileID: 786479627}
   - component: {fileID: 786479626}
   m_Layer: 5
   m_Name: Image (2)
@@ -612,7 +611,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 786479627}
+      - m_Target: {fileID: 0}
         m_MethodName: spawnBlueprint
         m_Mode: 1
         m_Arguments:
@@ -623,19 +622,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &786479627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 786479624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03f6da4389848bb40899701d839b1d89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefab: {fileID: 8959540075350396719, guid: 6e8b95e89a0228443a727b571b6faaef, type: 3}
 --- !u!114 &786479628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -684,8 +670,8 @@ GameObject:
   - component: {fileID: 870335779}
   - component: {fileID: 870335782}
   - component: {fileID: 870335781}
-  - component: {fileID: 870335783}
   - component: {fileID: 870335780}
+  - component: {fileID: 870335783}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -756,7 +742,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 870335783}
-        m_MethodName: spawnBlueprint
+        m_MethodName: SpawnBlueprint
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1022,17 +1008,17 @@ PrefabInstance:
     - target: {fileID: 8246524629011379014, guid: 5bc9a0b3755ae884590ea8b2409c0f29,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 620
       objectReference: {fileID: 0}
     - target: {fileID: 8246524629011379014, guid: 5bc9a0b3755ae884590ea8b2409c0f29,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -59
       objectReference: {fileID: 0}
     - target: {fileID: 8246524629011379014, guid: 5bc9a0b3755ae884590ea8b2409c0f29,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 898
       objectReference: {fileID: 0}
     - target: {fileID: 8246524629011379014, guid: 5bc9a0b3755ae884590ea8b2409c0f29,
         type: 3}

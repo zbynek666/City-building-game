@@ -10,6 +10,7 @@ public class BuldingButtonsManager : MonoBehaviour
     public void SpawnBlueprint()
     {
         Instantiate(prefab);
+
     }
 
 }

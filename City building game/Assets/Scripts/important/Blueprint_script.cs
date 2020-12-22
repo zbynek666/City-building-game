@@ -30,12 +30,14 @@ public class Blueprint_script : MonoBehaviour
                 Mathf.Round(hit.point.x / 10.0f) * 10.0f,
                 hit.point.y,
                 Mathf.Round(hit.point.z / 10.0f) * 10.0f);
+
         }
 
         if (Input.GetMouseButton(0))
         {
 
             Instantiate(prefab, transform.position, transform.rotation);
+            GridManager.Instance.addToPosition();
             //nont know why it doesnt work
             if (Input.GetKeyDown("left shift"))
             {
