@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class buldingPlacementControler : MonoBehaviour
+public class BuldingPlacementControler : MonoBehaviour
 {
     [SerializeField] private GameObject gameObjectPrefab;
 
@@ -10,9 +10,9 @@ public class buldingPlacementControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
-    private void newObjectMovement() 
+    private void NewObjectMovement()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))

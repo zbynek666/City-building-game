@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class blueprint_script : MonoBehaviour
+public class Blueprint_script : MonoBehaviour
 {
 
     RaycastHit hit;
@@ -24,7 +24,7 @@ public class blueprint_script : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit,5000.0f,1))
+        if (Physics.Raycast(ray, out hit, 5000.0f, 1))
         {
             transform.position = new Vector3(
                 Mathf.Round(hit.point.x / 10.0f) * 10.0f,
@@ -41,11 +41,11 @@ public class blueprint_script : MonoBehaviour
             {
                 Debug.Log("kys");
             }
-            else 
+            else
             {
                 Destroy(gameObject);
             }
-            
+
         }
 
     }

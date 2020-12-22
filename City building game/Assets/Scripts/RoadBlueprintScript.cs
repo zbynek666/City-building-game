@@ -5,18 +5,20 @@ using UnityEngine;
 
 public class RoadBlueprintScript : MonoBehaviour
 {
-    private Vector3? roadStart = null;
-    private Vector3? roadEnd = null;
-    public GameObject prefab;
+
+    /*private Vector3? roadStart;
+    public GameObject prefab;*/
     RaycastHit hit;
+    /*
     GameObject clone;
+
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -25,25 +27,21 @@ public class RoadBlueprintScript : MonoBehaviour
 
         move();
 
-        if (Input.GetMouseButton(0))
-        {
-            Debug.Log(roadStart);
-        }
 
-        if (Input.GetMouseButtonDown(0) && roadStart == null)
+
+        if (Input.GetMouseButtonDown(0))
         {
             roadStart = transform.position;
-            clone = Instantiate(prefab, (Vector3)roadStart, transform.rotation);
-
-        }
-        else if(Input.GetMouseButtonDown(0) && roadEnd == null)
-        {
-            roadEnd = transform.position;
-            buildRoad();
+            //clone = Instantiate(prefab, (Vector3)roadStart, transform.rotation);
+            planningPhase();
         }
 
+    }*/
+    public void destroyGameObject()
+    {
+        Destroy(gameObject);
     }
-    void move() 
+    public void move()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -56,19 +54,25 @@ public class RoadBlueprintScript : MonoBehaviour
         }
 
     }
-
-     void buildRoad()
-     {
+    /*
+    void planningPhase()
+    {
+        /*
         Destroy(clone);
         Instantiate(prefab, (Vector3)roadStart, Quaternion.Euler(new Vector3(0,AngleBetweenTwoPoints((Vector3)roadStart,(Vector3) roadEnd),0)));
         Destroy(gameObject);
-
+        */
+    /*     
      }
 
-    float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
-    {
+     float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
+     {
 
-        return(Mathf.Round ((Mathf.Atan2(a.z - b.z, a.x - b.x) * Mathf.Rad2Deg)/90))*90;
-        
-    }
+         return (Mathf.Round((Mathf.Atan2(a.z - b.z, a.x - b.x) * Mathf.Rad2Deg) / 90)) * 90;
+
+     }*/
+
+
+
+
 }

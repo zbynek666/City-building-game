@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class buldingButtonsManager : MonoBehaviour
+public class BuldingButtonsManager : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private GameObject prefab;
 
-    public void spawnBlueprint() 
+    public void SpawnBlueprint()
     {
         Instantiate(prefab);
     }
-        
+
 }
