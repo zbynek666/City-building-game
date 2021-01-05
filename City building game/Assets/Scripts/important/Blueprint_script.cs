@@ -27,17 +27,27 @@ public class Blueprint_script : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 5000.0f, 1))
         {
             transform.position = new Vector3(
-                Mathf.Round(hit.point.x / 10.0f) * 10.0f,
+                Mathf.Round(hit.point.x / GridManager.Instance.gridsize) * GridManager.Instance.gridsize,
                 hit.point.y,
-                Mathf.Round(hit.point.z / 10.0f) * 10.0f);
+                Mathf.Round(hit.point.z / GridManager.Instance.gridsize) * GridManager.Instance.gridsize);
 
         }
 
         if (Input.GetMouseButton(0))
         {
 
-            Instantiate(prefab, transform.position, transform.rotation);
-            GridManager.Instance.addToPosition();
+            GameObject g = Instantiate(prefab, transform.position, transform.rotation);
+            Structure s = g.GetComponent<Structure>();
+            s.x = (int)transform.position.x / GridManager.Instance.gridsize;
+            s.y = (int)transform.position.z / GridManager.Instance.gridsize;
+            GridManager.Instance.addToPosition(s.x, s.y, s);
+            foreach (Structure st in GridManager.Instance.g.gridArray)
+            {
+                if (st != null)
+                {
+                    st.kys();
+                }
+            }
             //nont know why it doesnt work
             if (Input.GetKeyDown("left shift"))
             {

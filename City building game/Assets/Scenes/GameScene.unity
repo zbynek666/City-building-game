@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 298513632}
   - component: {fileID: 298513631}
   - component: {fileID: 298513629}
+  - component: {fileID: 298513630}
   m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
@@ -202,8 +203,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: spawnBlueprint
+      - m_Target: {fileID: 298513630}
+        m_MethodName: SpawnBlueprint
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -213,6 +214,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &298513630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298513627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03f6da4389848bb40899701d839b1d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blueprint: {fileID: 6134952766882849889, guid: 017f7bee8f4c1424688e4ba3c0b53b41,
+    type: 3}
+  p: {fileID: 6134952766882849889, guid: a5062ff88bb972c49b9907559253b4b6, type: 3}
+  isRoad: 1
 --- !u!114 &298513631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,7 +330,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a203b5c0291d79e4c8b225d7ae920cb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p: {fileID: 2428701413868130471, guid: c780b378d02f37e42ae770e55bc92e8c, type: 3}
+  linePrefub: {fileID: 2428701413868130471, guid: c780b378d02f37e42ae770e55bc92e8c,
+    type: 3}
+  gridsize: 10
 --- !u!1 &633452736
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,7 +820,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03f6da4389848bb40899701d839b1d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1902567704410900916, guid: f0e9e3fff2508f641baf756b110dba5b, type: 3}
+  blueprint: {fileID: 0}
+  p: {fileID: 0}
+  isRoad: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,7 +1029,7 @@ PrefabInstance:
     - target: {fileID: 8246524629011379014, guid: 5bc9a0b3755ae884590ea8b2409c0f29,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 620
+      value: 551
       objectReference: {fileID: 0}
     - target: {fileID: 8246524629011379014, guid: 5bc9a0b3755ae884590ea8b2409c0f29,
         type: 3}
@@ -1018,7 +1039,7 @@ PrefabInstance:
     - target: {fileID: 8246524629011379014, guid: 5bc9a0b3755ae884590ea8b2409c0f29,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 898
+      value: 838
       objectReference: {fileID: 0}
     - target: {fileID: 8246524629011379014, guid: 5bc9a0b3755ae884590ea8b2409c0f29,
         type: 3}

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 744950923991853608}
   - component: {fileID: 5667012072609355556}
   - component: {fileID: 2191575871969613875}
+  - component: {fileID: 8237532190178913818}
   m_Layer: 2
   m_Name: roadWithSidewalk
   m_TagString: Untagged
@@ -81,3 +82,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &8237532190178913818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6134952766882849889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c58f2885db67f8c408397c8447f37ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 1
+  height: 1
+  x: 0
+  y: 0

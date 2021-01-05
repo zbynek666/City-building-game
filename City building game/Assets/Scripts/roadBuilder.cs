@@ -23,11 +23,11 @@ public class roadBuilder : MonoBehaviour
     {
         if (blueprint != null)
         {
-            blueprint.move();
+            //blueprint.move();
             if (Input.GetMouseButtonDown(0))
             {
                 roadStart = blueprint.transform.position;
-                blueprint.destroyGameObject();
+                //blueprint.destroyGameObject();
                 planningPhase = true;
             }
         }

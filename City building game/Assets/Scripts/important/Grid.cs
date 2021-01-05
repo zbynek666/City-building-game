@@ -16,6 +16,8 @@ public class Grid
         this.cellSize = cs;
         this.line = l;
 
+        gridArray = new Structure[width, height];
+
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
@@ -29,9 +31,9 @@ public class Grid
         }
 
     }
-    public GameObject AtPosition(int x, int y)
+    public Structure AtPosition(int x, int y)
     {
-        return null;
+        return gridArray[x, y];
     }
     public Vector2 getWorldPosition(int x, int y)
     {
