@@ -83,7 +83,6 @@ public class RoadBlueprintScript : MonoBehaviour
                         placeRoad(1, 0, (int)(end.x - start.x));
 
                     }
-                    Debug.Log("kys");
 
                 }
                 else
@@ -106,6 +105,8 @@ public class RoadBlueprintScript : MonoBehaviour
 
             }
         }
+
+
     }
     private void placeRoad(int plusX, int plusY, int distance)
     {
