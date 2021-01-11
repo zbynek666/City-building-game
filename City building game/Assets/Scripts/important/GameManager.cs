@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public GameObject moneyLabel;
     private int[] speeds = new int[] { 10, 6, 3 };
+    private int speedset = 1;
+    private bool pauseToggle = false;
+    public GameObject escMenu;
+
     private void Awake()
     {
         if (Instance == null)
@@ -44,17 +48,39 @@ public class GameManager : MonoBehaviour
     {
         return 300;
     }
-    public void changeSpeed(int speed)
+    public void changeSpeed()
     {
-        if (speed == 0)
+        if (pauseToggle)
         {
             CancelInvoke();
         }
         else
         {
             CancelInvoke();
-            InvokeRepeating("updateAll", speeds[speed], speeds[speed]);
+            InvokeRepeating("updateAll", speeds[speedset], speeds[speedset]);
 
+        }
+    }
+    public void pause()
+    {
+        if (pauseToggle)
+        {
+            changeSpeed();
+        }
+        else
+        {
+            changeSpeed();
+        }
+        escMenu.SetActive(!pauseToggle);
+
+        pauseToggle = !pauseToggle;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pause();
         }
     }
 }
