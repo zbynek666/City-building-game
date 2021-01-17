@@ -11,7 +11,7 @@ public class menu : MonoBehaviour
     }
     public void newGamebutton()
     {
-        SceneManager.LoadScene("GameScene", LoadSceneMode.Additive);
+        SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
     }
     public void loadGameButton()
     {

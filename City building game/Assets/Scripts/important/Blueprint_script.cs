@@ -27,9 +27,9 @@ public class Blueprint_script : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 5000.0f, 1))
         {
             transform.position = new Vector3(
-                Mathf.Round(hit.point.x / GridManager.Instance.gridsize) * GridManager.Instance.gridsize,
+                (Mathf.Round(hit.point.x / GridManager.Instance.gridsize) * GridManager.Instance.gridsize) + 5,
                 hit.point.y,
-                Mathf.Round(hit.point.z / GridManager.Instance.gridsize) * GridManager.Instance.gridsize);
+                (Mathf.Round(hit.point.z / GridManager.Instance.gridsize) * GridManager.Instance.gridsize) + 5);
 
         }
 
