@@ -107,6 +107,10 @@ public class GameManager : MonoBehaviour
 
         pauseToggle = !pauseToggle;
     }
+    public void resume()
+    {
+        escMenu.SetActive(pauseToggle);
+    }
     public void speedbtnClick()
     {
         if (speedset == 2)
@@ -123,11 +127,16 @@ public class GameManager : MonoBehaviour
     {
         //
 
-        if (!pauseToggle)
+        if (!pauseToggle && TimeBar.transform.localScale.x < timeBarSize.x)
         {
             timer += Time.deltaTime;
 
         }
+        if (TimeBar.transform.localScale.x > timeBarSize.x)
+        {
+            TimeBar.transform.localScale = new Vector3(timeBarSize.x, 1, 1);
+        }
+
         TimeBar.transform.localScale = new Vector3(timer / speeds[speedset], 1, 1);
 
 
@@ -136,7 +145,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             pause();
-            escMenu.SetActive(!pauseToggle);
+            escMenu.SetActive(pauseToggle);
 
         }
         if (Input.GetKeyDown(KeyCode.Escape))

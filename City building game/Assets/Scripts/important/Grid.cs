@@ -22,13 +22,22 @@ public class Grid
         {
             for (int j = 0; j < height; j++)
             {
-                var NewLine = GameObject.Instantiate(l, new Vector3(getWorldPosition(i, j).x -
-                    (cellSize / 2), 0, getWorldPosition(i, j).y - (cellSize / 2)), new Quaternion());
-                NewLine.transform.parent = parent;
-                NewLine = GameObject.Instantiate(l, new Vector3(getWorldPosition(i, j).x -
-                    (cellSize / 2), 0, getWorldPosition(i, j).y - (cellSize / 2)), Quaternion.Euler(new Vector3(0, 90, 0)));
-                NewLine.transform.parent = parent;
+                if (i == 0)
+                {
+                    var NewLine = GameObject.Instantiate(l, new Vector3(getWorldPosition(i, j).x -
+  (cellSize / 2), 0, getWorldPosition(i, j).y - (cellSize / 2)), Quaternion.Euler(new Vector3(0, 90, 0)));
+                    NewLine.transform.parent = parent;
 
+
+                }
+                if (j == 0)
+                {
+                    var NewLine = GameObject.Instantiate(l, new Vector3(getWorldPosition(i, j).x -
+    (cellSize / 2), 0, getWorldPosition(i, j).y - (cellSize / 2)), new Quaternion());
+                    NewLine.transform.localScale = new Vector3(0.03f, 1, 50);
+                    NewLine.transform.parent = parent;
+
+                }
             }
         }
 
