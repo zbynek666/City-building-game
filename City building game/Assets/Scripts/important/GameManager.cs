@@ -2,15 +2,28 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public GameObject moneyLabel;
-    private int[] speeds = new int[] { 10, 6, 3 };
-    private int speedset = 1;
-    private bool pauseToggle = false;
     public GameObject escMenu;
+    public GameObject pauseBtn;
+    public GameObject speedBtn;
+    public GameObject populationLabel;
+    public GameObject TimeBar;
+    public GameObject moneyIncameLabel;
+    public GameObject dateLabel;
+
+
+
+    private int[] speeds = new int[] { 10, 6, 3 };
+    private int speedset = 0;
+    private bool pauseToggle = false;
+    private float timer = 0;
+    private Vector3 timeBarSize = new Vector3(1, 1, 1);
+
 
     private void Awake()
     {
@@ -27,8 +40,13 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("updateAll", speeds[0], speeds[0]);
+        InvokeRepeating("updateAll", 0, speeds[0]);
+        pauseBtn.GetComponent<Button>().onClick.AddListener(pause);
+        speedBtn.GetComponent<Button>().onClick.AddListener(speedbtnClick);
+
     }
+
+
 
 
     //main cycle
@@ -36,11 +54,19 @@ public class GameManager : MonoBehaviour
     {
 
         //actual thinks
+
         GlobalVariables.moneyIncome = calculateIncome();
         GlobalVariables.money += GlobalVariables.moneyIncome / 30;
 
-        //player info
-        moneyLabel.GetComponent<TextMeshProUGUI>().text = GlobalVariables.money + "+" + GlobalVariables.moneyIncome;
+        //update labels
+        moneyLabel.GetComponent<TextMeshProUGUI>().text = GlobalVariables.money + "";
+        moneyIncameLabel.GetComponent<TextMeshProUGUI>().text = "+" + GlobalVariables.moneyIncome;
+        populationLabel.GetComponent<TextMeshProUGUI>().text = GlobalVariables.population + "";
+        dateLabel.GetComponent<TextMeshProUGUI>().text = (GlobalVariables.day / 360 + 2020) + "/" + (((GlobalVariables.day % 360) / 30) + 1) + "/" + (((GlobalVariables.day % 360) % 30) + 1);
+
+
+        GlobalVariables.day++;
+        timer = 0;
 
     }
 
@@ -48,39 +74,74 @@ public class GameManager : MonoBehaviour
     {
         return 300;
     }
-    public void changeSpeed()
+    public void changeSpeed(int a)
     {
-        if (pauseToggle)
+
+        if (a == -1)
         {
             CancelInvoke();
+
         }
         else
         {
             CancelInvoke();
-            InvokeRepeating("updateAll", speeds[speedset], speeds[speedset]);
-
+            InvokeRepeating("updateAll", speeds[speedset] - timer, speeds[a]);
+            speedset = a;
         }
+
+
+
+
     }
     public void pause()
     {
         if (pauseToggle)
         {
-            changeSpeed();
+            changeSpeed(speedset);
+
         }
         else
         {
-            changeSpeed();
+            changeSpeed(-1);
         }
-        escMenu.SetActive(!pauseToggle);
 
         pauseToggle = !pauseToggle;
+    }
+    public void speedbtnClick()
+    {
+        if (speedset == 2)
+        {
+            changeSpeed(0);
+        }
+        else
+        {
+            changeSpeed(speedset + 1);
+        }
     }
 
     void Update()
     {
+        //
+
+        if (!pauseToggle)
+        {
+            timer += Time.deltaTime;
+
+        }
+        TimeBar.transform.localScale = new Vector3(timer / speeds[speedset], 1, 1);
+
+
+
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             pause();
+            escMenu.SetActive(!pauseToggle);
+
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+
         }
     }
 }

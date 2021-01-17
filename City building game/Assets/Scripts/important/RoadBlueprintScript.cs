@@ -137,7 +137,8 @@ public class RoadBlueprintScript : MonoBehaviour
     }
     public void createRoad(int x, int y)
     {
-        GameObject g = Instantiate(prefab, new Vector3(x * GridManager.Instance.gridsize, 0, y * GridManager.Instance.gridsize), Quaternion.Euler(new Vector3(0, 90 - (isX * 90), 0)));
+        GameObject g = Instantiate(prefab, new Vector3(x * GridManager.Instance.gridsize, 0,
+            y * GridManager.Instance.gridsize), Quaternion.Euler(new Vector3(0, 90 - (isX * 90), 0)));
         Structure s = g.GetComponent<Structure>();
         s.x = x;
         s.y = y;

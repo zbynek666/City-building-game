@@ -8,5 +8,5 @@ public static class GlobalVariables
     public static int money = 10000;
     public static int moneyIncome = 0;
     public static int population = 0;
-    public static int day;
+    public static int day = 355;
 }

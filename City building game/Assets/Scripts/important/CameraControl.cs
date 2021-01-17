@@ -48,6 +48,9 @@ public class CameraControl : MonoBehaviour
 
 
         //drag movement
+
+
+
         if (Input.GetMouseButtonDown(2))
         {
             Plane plane = new Plane(Vector3.up, Vector3.zero);

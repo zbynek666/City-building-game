@@ -22,9 +22,11 @@ public class Grid
         {
             for (int j = 0; j < height; j++)
             {
-                var NewLine = GameObject.Instantiate(l, new Vector3(getWorldPosition(i, j).x - (cellSize / 2), 0, getWorldPosition(i, j).y - (cellSize / 2)), new Quaternion());
+                var NewLine = GameObject.Instantiate(l, new Vector3(getWorldPosition(i, j).x -
+                    (cellSize / 2), 0, getWorldPosition(i, j).y - (cellSize / 2)), new Quaternion());
                 NewLine.transform.parent = parent;
-                NewLine = GameObject.Instantiate(l, new Vector3(getWorldPosition(i, j).x - (cellSize / 2), 0, getWorldPosition(i, j).y - (cellSize / 2)), Quaternion.Euler(new Vector3(0, 90, 0)));
+                NewLine = GameObject.Instantiate(l, new Vector3(getWorldPosition(i, j).x -
+                    (cellSize / 2), 0, getWorldPosition(i, j).y - (cellSize / 2)), Quaternion.Euler(new Vector3(0, 90, 0)));
                 NewLine.transform.parent = parent;
 
             }
