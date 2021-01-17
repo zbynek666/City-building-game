@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -85,12 +86,18 @@ public class GameManager : MonoBehaviour
         else
         {
             CancelInvoke();
-            InvokeRepeating("updateAll", speeds[speedset] - timer, speeds[a]);
             speedset = a;
+
+            InvokeRepeating("updateAll", speeds[speedset] - timer, speeds[a]);
         }
 
 
 
+
+    }
+    public void exit()
+    {
+        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
 
     }
     public void pause()
@@ -109,7 +116,9 @@ public class GameManager : MonoBehaviour
     }
     public void resume()
     {
-        escMenu.SetActive(pauseToggle);
+        escMenu.SetActive(!pauseToggle);
+        pauseToggle = !pauseToggle;
+
     }
     public void speedbtnClick()
     {
@@ -125,6 +134,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        moneyLabel.GetComponent<TextMeshProUGUI>().text = GlobalVariables.money + "";
+
         //
 
         if (!pauseToggle && TimeBar.transform.localScale.x < timeBarSize.x)
@@ -148,8 +159,9 @@ public class GameManager : MonoBehaviour
             escMenu.SetActive(pauseToggle);
 
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
+            pause();
 
         }
     }

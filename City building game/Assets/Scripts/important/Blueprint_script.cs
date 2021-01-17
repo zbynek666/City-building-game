@@ -35,27 +35,35 @@ public class Blueprint_script : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-
-            GameObject g = Instantiate(prefab, transform.position, transform.rotation);
-            Structure s = g.GetComponent<Structure>();
-            s.x = (int)transform.position.x / GridManager.Instance.gridsize;
-            s.y = (int)transform.position.z / GridManager.Instance.gridsize;
-            GridManager.Instance.addToPosition(s.x, s.y, s);
-            foreach (Structure st in GridManager.Instance.g.gridArray)
+            if (GlobalVariables.money >= 500)
             {
-                if (st != null)
+                GlobalVariables.money -= 500;
+                GameObject g = Instantiate(prefab, transform.position, transform.rotation);
+                Structure s = g.GetComponent<Structure>();
+                s.x = (int)transform.position.x / GridManager.Instance.gridsize;
+                s.y = (int)transform.position.z / GridManager.Instance.gridsize;
+                GridManager.Instance.addToPosition(s.x, s.y, s);
+                foreach (Structure st in GridManager.Instance.g.gridArray)
                 {
-                    st.kys();
+                    if (st != null)
+                    {
+                        st.kys();
+                    }
                 }
-            }
-            //nont know why it doesnt work
-            if (Input.GetKeyDown("left shift"))
-            {
-                Debug.Log("kys");
+                //nont know why it doesnt work
+                if (Input.GetKeyDown("left shift"))
+                {
+                    Debug.Log("kys");
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
             }
             else
             {
                 Destroy(gameObject);
+
             }
 
         }

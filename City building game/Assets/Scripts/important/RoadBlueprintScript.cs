@@ -112,6 +112,7 @@ public class RoadBlueprintScript : MonoBehaviour
     {
         bool kys = true;
         Vector2[] v = new Vector2[distance + 1];
+        // chaeck
         for (int i = 0; i < distance + 1; i++)
         {
 
@@ -124,10 +125,14 @@ public class RoadBlueprintScript : MonoBehaviour
             }
 
         }
-        if (kys)
+
+        //placing road 
+        if (kys && GlobalVariables.money >= v.Length * 100)
         {
+            GlobalVariables.money -= v.Length * 100;
             foreach (Vector2 r in v)
             {
+
                 createRoad((int)r.x, (int)r.y);
             }
         }
