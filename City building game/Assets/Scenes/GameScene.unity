@@ -1991,9 +1991,9 @@ MonoBehaviour:
   movementSpeed: 0.5
   movementTime: 4
   rotationAmount: 1
-  zoomAmount: {x: 0, y: -50, z: 50}
-  minZoom: 0
-  maxZoom: 1000
+  zoomAmount: {x: 0, y: -5, z: 5}
+  minZoom: -100
+  maxZoom: 500
   newRotation: {x: 0, y: 0, z: 0, w: 0}
   newPosition: {x: 0, y: 0, z: 0}
   newZoom: {x: 0, y: 0, z: 0}
@@ -2424,8 +2424,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03f6da4389848bb40899701d839b1d89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blueprint: {fileID: 0}
-  p: {fileID: 0}
+  blueprint: {fileID: 1902567704410900916, guid: f0e9e3fff2508f641baf756b110dba5b,
+    type: 3}
+  p: {fileID: 1902567704410900916, guid: 9313b0f7cace3884ca18a553c56b1873, type: 3}
   isRoad: 0
 --- !u!1 &932086350
 GameObject:

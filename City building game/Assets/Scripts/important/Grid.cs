@@ -8,6 +8,7 @@ public class Grid
     private int cellSize;
     public Structure[,] gridArray;
     private GameObject line;
+    List<GameObject> kys = new List<GameObject>();
 
     public Grid(int w, int h, int cs, GameObject l, Transform parent)
     {
