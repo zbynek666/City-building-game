@@ -8,98 +8,123 @@ public class RoadBlueprintScript : MonoBehaviour
     RaycastHit hit;
     Vector3 movepoint;
     public GameObject prefab;
-    public Vector2 start;
-
-    int isX = 0;//difference on axis X bigger that difference on axis Y
+    private Vector2 start = new Vector2(-1, -1);
+    private Vector2 gridPosition;
+    private Vector2 lastgridPosition = new Vector2(-1, -1);
+    private List<GameObject> bluePrints;
+    private int finalDistance;
+    private int finalRot;
 
     public RoadBlueprintScript(GameObject p)
     {
         this.prefab = p;
     }
-    void Start()
+    public void Start()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        start = new Vector2(-1, -1);
+        bluePrints = new List<GameObject>();
 
-        if (Physics.Raycast(ray, out hit))
-        {
-            transform.position = hit.point;
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, 5000.0f, 1))
-        {
-            transform.position = new Vector3(
-                Mathf.Round(hit.point.x / GridManager.Instance.gridsize) * GridManager.Instance.gridsize,
-                hit.point.y,
-                Mathf.Round(hit.point.z / GridManager.Instance.gridsize) * GridManager.Instance.gridsize);
-
-        }
-
+        //placing road
         if (Input.GetMouseButtonDown(0))
         {
-            /*
-            GameObject g = Instantiate(prefab, transform.position, transform.rotation);
-            Structure s = g.GetComponent<Structure>();
-            s.x = (int)transform.position.x / GridManager.Instance.gridsize;
-            s.y = (int)transform.position.z / GridManager.Instance.gridsize;
-            GridManager.Instance.addToPosition(s.x, s.y, s);
-
-
-            */
-
-            if (start == new Vector2(0.0f, 0.0f))
+            if (start == new Vector2(-1, -1) && GridManager.Instance.getOnPosition(gridPosition) == null)
             {
-                start = new Vector2((int)transform.position.x / GridManager.Instance.gridsize, (int)transform.position.z / GridManager.Instance.gridsize);
+                start = gridPosition;
+            }
+            else if (GridManager.Instance.getOnPosition(gridPosition) == null)
+            {
+                placeRoad(finalDistance);
+                Destroy(gameObject);
             }
             else
             {
+                //someting is on position
+            }
+        }
 
-                Vector2 end = new Vector2((int)transform.position.x / GridManager.Instance.gridsize, (int)transform.position.z / GridManager.Instance.gridsize);
+        //visualizatin one in hand
+        if (start == new Vector2(-1, -1))
+        {
+            if (Physics.Raycast(ray, out hit, 5000.0f, 1))
+            {
 
-                Debug.Log(Math.Abs(start.x - end.x) + "," + Math.Abs(start.y - end.y) + "");
-
-                if (Math.Abs(start.x - end.x) > Math.Abs(start.y - end.y))
+                gridPosition = GridManager.Instance.getPositionOnGrid(hit);
+                if (gridPosition.x != -1)
                 {
-                    isX = 1;
-
+                    transform.position = new Vector3(gridPosition.x * GridManager.Instance.gridsize, 0, gridPosition.y * GridManager.Instance.gridsize);
 
                 }
 
+            }
+        }
+        else
+        {
 
-                if (isX == 1)
+            if (Physics.Raycast(ray, out hit, 5000.0f, 1))
+            {
+
+                gridPosition = GridManager.Instance.getPositionOnGrid(hit);
+
+
+                if (gridPosition != lastgridPosition)
                 {
-                    if (start.x > end.x)
+                    int differenceX = Math.Abs(Math.Abs((int)start.x) - Math.Abs((int)gridPosition.x));
+                    int differenceY = Math.Abs(Math.Abs((int)start.y) - Math.Abs((int)gridPosition.y));
+
+
+                    if (differenceX > differenceY)
                     {
-                        placeRoad(-1, 0, (int)(start.x - end.x));
+                        if (start.x < gridPosition.x)
+                        {
+
+                            finalDistance = Math.Abs((int)start.x - (int)gridPosition.x);
+                            finalRot = 0;
+                            blueprintVisualization(finalDistance, 0);
+                            this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+
+                        }
+                        else
+                        {
+                            finalDistance = Math.Abs((int)gridPosition.x - (int)start.x);
+                            finalRot = 2;
+                            blueprintVisualization(finalDistance, 2);
+                            this.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+                        }
 
                     }
                     else
                     {
-                        placeRoad(1, 0, (int)(end.x - start.x));
+                        if (start.y < gridPosition.y)
+                        {
+                            finalDistance = Math.Abs((int)start.y - (int)gridPosition.y);
+                            blueprintVisualization(finalDistance, 1);
+                            this.transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
+                            finalRot = 1;
+                        }
+                        else
+                        {
+                            finalDistance = Math.Abs((int)gridPosition.y - (int)start.y);
+                            finalRot = 3;
+                            blueprintVisualization(finalDistance, 3);
+                            this.transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
+
+
+
+                        }
 
                     }
+
+                    lastgridPosition = gridPosition;
 
                 }
-                else
-                {
-
-                    if (start.y > end.y)
-                    {
-                        placeRoad(0, -1, (int)(start.y - end.y));
-
-                    }
-                    else
-                    {
-                        placeRoad(0, 1, (int)(end.y - start.y));
-
-                    }
-                }
-
 
 
 
@@ -107,21 +132,87 @@ public class RoadBlueprintScript : MonoBehaviour
         }
 
 
+
     }
-    private void placeRoad(int plusX, int plusY, int distance)
+    private void blueprintVisualization(int size, int direction)
     {
+
+        int plusX = 0;
+        int plusY = 0;
+        int rot = 0;
+        //TODO strany
+        if (direction == 0)
+        {
+            plusX = GridManager.Instance.gridsize;
+
+        }
+        if (direction == 1)
+        {
+            plusY = GridManager.Instance.gridsize;
+            rot = 90;
+
+        }
+        if (direction == 2)
+        {
+            plusX = -GridManager.Instance.gridsize;
+
+        }
+        if (direction == 3)
+        {
+            plusY = -GridManager.Instance.gridsize;
+            rot = 90;
+
+        }
+
+        for (int i = 0; i < bluePrints.Count; i++)
+        {
+            Destroy(bluePrints[i]);
+        }
+        bluePrints.Clear();
+        Vector2 s = GridManager.Instance.getRealPosition(start);
+
+        for (int i = 0; i < size + 1; i++)
+        {
+
+            GameObject g = Instantiate(prefab, new Vector3(s.x + (i * plusX), 0, s.y + (i * plusY)), Quaternion.Euler(new Vector3(0, rot, 0)));
+            bluePrints.Add(g);
+        }
+        Debug.Log(start);
+
+    }
+
+    private void placeRoad(int distance)
+    {
+        int plusX = 0;
+        int plusY = 0;
+        if (finalRot == 0)
+        {
+            plusX = 1;
+        }
+        else if (finalRot == 1)
+        {
+            plusY = 1;
+        }
+        else if (finalRot == 2)
+        {
+            plusX = -1;
+        }
+        else if (finalRot == 3)
+        {
+            plusY = -1;
+        }
+        //check if is in way
+
+
         bool kys = true;
         Vector2[] v = new Vector2[distance + 1];
-        // chaeck
         for (int i = 0; i < distance + 1; i++)
         {
 
             v[i] = (new Vector2((int)start.x + (i * plusX), (int)start.y + (i * plusY)));
-            if (GridManager.Instance.getOnPosition((int)v[i].x, (int)v[i].y) != null)
+            if (GridManager.Instance.getOnPosition(new Vector2((int)v[i].x, (int)v[i].y)) != null)
             {
                 kys = false;
-
-
             }
 
         }
@@ -135,15 +226,24 @@ public class RoadBlueprintScript : MonoBehaviour
 
                 createRoad((int)r.x, (int)r.y);
             }
+            for (int i = 0; i < bluePrints.Count; i++)
+            {
+                Destroy(bluePrints[i]);
+            }
+            bluePrints.Clear();
         }
 
-        Destroy(gameObject);
 
     }
-    public void createRoad(int x, int y)
+    private void createRoad(int x, int y)
     {
+        int rot = 0;
+        if (finalRot == 1 || finalRot == 3)
+        {
+            rot = 1;
+        }
         GameObject g = Instantiate(prefab, new Vector3(x * GridManager.Instance.gridsize, 0,
-            y * GridManager.Instance.gridsize), Quaternion.Euler(new Vector3(0, 90 - (isX * 90), 0)));
+            y * GridManager.Instance.gridsize), Quaternion.Euler(new Vector3(0, (rot * 90), 0)));
         Structure s = g.GetComponent<Structure>();
         s.x = x;
         s.y = y;

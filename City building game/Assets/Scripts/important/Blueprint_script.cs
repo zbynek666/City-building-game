@@ -26,10 +26,23 @@ public class Blueprint_script : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 5000.0f, 1))
         {
-            transform.position = new Vector3(
-                (Mathf.Round(hit.point.x / GridManager.Instance.gridsize) * GridManager.Instance.gridsize) + 5,
+            //set pivot to fit in square
+            if (prefab.GetComponent<Structure>().width % 2 == 0 || prefab.GetComponent<Structure>().height % 2 == 0)
+            {
+                transform.position = new Vector3(
+                (Mathf.Round(hit.point.x / GridManager.Instance.gridsize) * GridManager.Instance.gridsize),
                 hit.point.y,
-                (Mathf.Round(hit.point.z / GridManager.Instance.gridsize) * GridManager.Instance.gridsize) + 5);
+                (Mathf.Round(hit.point.z / GridManager.Instance.gridsize) * GridManager.Instance.gridsize));
+            }
+            else
+            {
+                transform.position = new Vector3(
+                (Mathf.Round(hit.point.x / GridManager.Instance.gridsize) * GridManager.Instance.gridsize),
+                hit.point.y,
+                (Mathf.Round(hit.point.z / GridManager.Instance.gridsize) * GridManager.Instance.gridsize));
+
+            }
+
 
         }
 
@@ -53,7 +66,6 @@ public class Blueprint_script : MonoBehaviour
                 //nont know why it doesnt work
                 if (Input.GetKeyDown("left shift"))
                 {
-                    Debug.Log("kys");
                 }
                 else
                 {

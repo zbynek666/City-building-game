@@ -10,7 +10,7 @@ public class Structure : MonoBehaviour
     public int y;
     public void kys()
     {
-        Debug.Log(x + "," + y);
+        Debug.Log(gameObject.GetComponent<Renderer>().bounds.size);
     }
 
 }

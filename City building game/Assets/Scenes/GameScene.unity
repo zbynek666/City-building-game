@@ -1991,7 +1991,7 @@ MonoBehaviour:
   movementSpeed: 0.5
   movementTime: 4
   rotationAmount: 1
-  zoomAmount: {x: 0, y: -5, z: 5}
+  zoomAmount: {x: 0, y: -20, z: 20}
   minZoom: -100
   maxZoom: 500
   newRotation: {x: 0, y: 0, z: 0, w: 0}
