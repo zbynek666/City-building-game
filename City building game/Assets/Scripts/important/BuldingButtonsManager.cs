@@ -35,7 +35,6 @@ public class BuldingButtonsManager : MonoBehaviour
         {
             go.AddComponent<zoneBlueprintScript>().prefab = p;
         }
-        GridManager.Instance.debugLog();
 
     }
 

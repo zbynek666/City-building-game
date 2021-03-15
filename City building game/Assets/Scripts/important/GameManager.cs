@@ -17,9 +17,9 @@ public class GameManager : MonoBehaviour
     public GameObject TimeBar;
     public GameObject moneyIncameLabel;
     public GameObject dateLabel;
+    public GameObject placeSmoke;
 
 
-    public UnityEvent kys = new UnityEvent();
 
 
 
@@ -107,7 +107,6 @@ public class GameManager : MonoBehaviour
 
     public void pause()
     {
-        kys.Invoke();
         if (pauseToggle)
         {
             changeSpeed(speedset);

@@ -26,8 +26,8 @@ public class Grid
                 if (i == 0)
                 {
                     var NewLine = GameObject.Instantiate(l, new Vector3(getWorldPosition(i, j).x -
-  (cellSize / 2) + 740, 0, getWorldPosition(i, j).y - (cellSize / 2)), Quaternion.Euler(new Vector3(0, 90, 0)));
-                    NewLine.transform.localScale = new Vector3(0.03f, 1, 150);
+  (cellSize / 2), 0, getWorldPosition(i, j).y - (cellSize / 2)), Quaternion.Euler(new Vector3(0, 90, 0)));
+                    NewLine.transform.localScale = new Vector3(0.03f, 1, width);
 
                     NewLine.transform.parent = parent;
 
@@ -36,8 +36,8 @@ public class Grid
                 if (j == 0)
                 {
                     var NewLine = GameObject.Instantiate(l, new Vector3(getWorldPosition(i, j).x -
-    (cellSize / 2), 0, getWorldPosition(i, j).y - (cellSize / 2) + 740), new Quaternion());
-                    NewLine.transform.localScale = new Vector3(0.03f, 1, 150);
+    (cellSize / 2), 0, getWorldPosition(i, j).y - (cellSize / 2)), new Quaternion());
+                    NewLine.transform.localScale = new Vector3(0.03f, 1, height);
                     NewLine.transform.parent = parent;
 
                 }

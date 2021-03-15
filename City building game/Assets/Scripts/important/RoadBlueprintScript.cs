@@ -244,6 +244,10 @@ public class RoadBlueprintScript : MonoBehaviour
         }
         GameObject g = Instantiate(prefab, new Vector3(x * GridManager.Instance.gridsize, 0,
             y * GridManager.Instance.gridsize), Quaternion.Euler(new Vector3(0, (rot * 90), 0)));
+        //smoke
+        Instantiate(GameManager.Instance.placeSmoke, new Vector3(x * GridManager.Instance.gridsize, 0,
+            y * GridManager.Instance.gridsize), new Quaternion());
+
         Structure s = g.GetComponent<Structure>();
         s.x = x;
         s.y = y;

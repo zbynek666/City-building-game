@@ -56,6 +56,8 @@ public class Blueprint_script : MonoBehaviour
                 s.x = (int)transform.position.x / GridManager.Instance.gridsize;
                 s.y = (int)transform.position.z / GridManager.Instance.gridsize;
                 GridManager.Instance.addToPosition(s.x, s.y, s);
+                //smoke
+                Instantiate(GameManager.Instance.placeSmoke, transform.position, new Quaternion());
                 foreach (Structure st in GridManager.Instance.g.gridArray)
                 {
                     if (st != null)

@@ -9,9 +9,10 @@ public class Structure : MonoBehaviour
     public int x;
     public int y;
 
+    public bool isPlaceByDefault = false;
+
     void Start()
     {
-        GameManager.Instance.kys.AddListener(kys);
     }
     public void kys()
     {

@@ -1422,8 +1422,8 @@ MonoBehaviour:
   linePrefub: {fileID: 2428701413868130471, guid: c780b378d02f37e42ae770e55bc92e8c,
     type: 3}
   gridsize: 10
-  width: 150
-  height: 150
+  width: 200
+  height: 200
 --- !u!114 &371807316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1444,6 +1444,8 @@ MonoBehaviour:
   TimeBar: {fileID: 1522724330}
   moneyIncameLabel: {fileID: 1559686712}
   dateLabel: {fileID: 101194774}
+  placeSmoke: {fileID: 3552446154768979186, guid: 3a45341e77fac2e458fff676346b1657,
+    type: 3}
 --- !u!114 &371807317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1891,7 +1893,7 @@ GameObject:
   - component: {fileID: 613257696}
   - component: {fileID: 613257695}
   m_Layer: 5
-  m_Name: categori2
+  m_Name: road
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2072,12 +2074,12 @@ GameObject:
   - component: {fileID: 679899773}
   - component: {fileID: 679899772}
   m_Layer: 5
-  m_Name: categori4
+  m_Name: test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &679899771
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3142,7 +3144,7 @@ MonoBehaviour:
   blueprint: {fileID: 8553815690382935553, guid: 40bdfe436d5692a4b8679c31573af41e,
     type: 3}
   p: {fileID: 2232599860558634972, guid: 29603e046b8745c4e90b5c2ddc553855, type: 3}
-  str: 0
+  str: 1
 --- !u!114 &930979780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3321,7 +3323,7 @@ GameObject:
   - component: {fileID: 932853006}
   - component: {fileID: 932853005}
   m_Layer: 5
-  m_Name: categori3
+  m_Name: buildings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3835,7 +3837,7 @@ GameObject:
   - component: {fileID: 1247253887}
   - component: {fileID: 1247253886}
   m_Layer: 5
-  m_Name: categori1
+  m_Name: zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5271,7 +5273,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 560675e417f33ad4b9fbe0140c1fa674,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 738
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 560675e417f33ad4b9fbe0140c1fa674,
         type: 3}
@@ -5281,7 +5283,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 560675e417f33ad4b9fbe0140c1fa674,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1167
+      value: 2030
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 560675e417f33ad4b9fbe0140c1fa674,
         type: 3}
