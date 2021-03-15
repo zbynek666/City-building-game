@@ -8,9 +8,15 @@ public class Structure : MonoBehaviour
     public int height;
     public int x;
     public int y;
+
+    void Start()
+    {
+        GameManager.Instance.kys.AddListener(kys);
+    }
     public void kys()
     {
-        Debug.Log(gameObject.GetComponent<Renderer>().bounds.size);
+        Debug.Log("kys");
+
     }
 
 }

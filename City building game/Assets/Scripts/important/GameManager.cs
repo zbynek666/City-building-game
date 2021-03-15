@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -16,6 +17,9 @@ public class GameManager : MonoBehaviour
     public GameObject TimeBar;
     public GameObject moneyIncameLabel;
     public GameObject dateLabel;
+
+
+    public UnityEvent kys = new UnityEvent();
 
 
 
@@ -100,8 +104,10 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Menu", LoadSceneMode.Single);
 
     }
+
     public void pause()
     {
+        kys.Invoke();
         if (pauseToggle)
         {
             changeSpeed(speedset);
@@ -135,6 +141,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         moneyLabel.GetComponent<TextMeshProUGUI>().text = GlobalVariables.money + "";
+        populationLabel.GetComponent<TextMeshProUGUI>().text = PopulationManager.Instance.population + "";
 
         //
 
@@ -164,5 +171,7 @@ public class GameManager : MonoBehaviour
             pause();
 
         }
+
     }
+
 }

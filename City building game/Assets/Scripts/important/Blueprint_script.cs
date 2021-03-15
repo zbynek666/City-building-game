@@ -60,7 +60,7 @@ public class Blueprint_script : MonoBehaviour
                 {
                     if (st != null)
                     {
-                        st.kys();
+                        //st.kys();
                     }
                 }
                 //nont know why it doesnt work

@@ -56,7 +56,7 @@ public class RoadBlueprintScript : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 5000.0f, 1))
             {
 
-                gridPosition = GridManager.Instance.getPositionOnGrid(hit);
+                gridPosition = GridManager.Instance.getPositionOnGrid(new Vector2(hit.point.x, hit.point.z));
                 if (gridPosition.x != -1)
                 {
                     transform.position = new Vector3(gridPosition.x * GridManager.Instance.gridsize, 0, gridPosition.y * GridManager.Instance.gridsize);
@@ -71,7 +71,7 @@ public class RoadBlueprintScript : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 5000.0f, 1))
             {
 
-                gridPosition = GridManager.Instance.getPositionOnGrid(hit);
+                gridPosition = GridManager.Instance.getPositionOnGrid(new Vector2(hit.point.x, hit.point.z));
 
 
                 if (gridPosition != lastgridPosition)
@@ -174,10 +174,10 @@ public class RoadBlueprintScript : MonoBehaviour
         for (int i = 0; i < size + 1; i++)
         {
 
-            GameObject g = Instantiate(prefab, new Vector3(s.x + (i * plusX), 0, s.y + (i * plusY)), Quaternion.Euler(new Vector3(0, rot, 0)));
+            GameObject g = Instantiate(gameObject, new Vector3(s.x + (i * plusX), 0, s.y + (i * plusY)), Quaternion.Euler(new Vector3(0, rot, 0)));
+            Destroy(g.GetComponent<RoadBlueprintScript>());
             bluePrints.Add(g);
         }
-        Debug.Log(start);
 
     }
 
