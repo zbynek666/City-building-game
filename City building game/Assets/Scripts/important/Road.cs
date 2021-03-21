@@ -12,7 +12,6 @@ public class Road : Structure
     }
     void Start()
     {
-        GridManager.Instance.onBuild.Invoke();
 
         GridManager.Instance.onBuild.AddListener(checkCurvy);
         //curvys[0] = gameObject.GetComponent<MeshFilter>().mesh;
