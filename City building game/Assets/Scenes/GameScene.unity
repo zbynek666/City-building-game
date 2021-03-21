@@ -1424,6 +1424,9 @@ MonoBehaviour:
   gridsize: 10
   width: 200
   height: 200
+  onBuild:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &371807316
 MonoBehaviour:
   m_ObjectHideFlags: 0
