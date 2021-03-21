@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GridManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GridManager : MonoBehaviour
     public int gridsize = 10;
     public int width = 150;
     public int height = 150;
+    public UnityEvent onBuild;
     private void Awake()
     {
         if (Instance == null)
@@ -26,7 +28,10 @@ public class GridManager : MonoBehaviour
     void Start()
     {
         g = new Grid(width, height, gridsize, linePrefub, this.transform);
+        if (onBuild == null)
+            onBuild = new UnityEvent();
     }
+
     public void addToPosition(int x, int y, Structure ob)
     {
 
@@ -44,6 +49,7 @@ public class GridManager : MonoBehaviour
                 g.gridArray[x, y] = ob;
             }
         }
+        onBuild.Invoke();
 
     }
     public Structure getOnPosition(Vector2 pos)
@@ -158,6 +164,8 @@ public class GridManager : MonoBehaviour
         }
         return null;
     }
+
+
 
 
 }

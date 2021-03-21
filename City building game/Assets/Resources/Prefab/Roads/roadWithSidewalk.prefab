@@ -99,6 +99,12 @@ MonoBehaviour:
   height: 1
   x: 0
   y: 0
+  isPlaceByDefault: 0
+  curvys:
+  - {fileID: 4579454407841743219, guid: fd38513a9b1a0994ca2688377b64245d, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &6000003057337258841
 MonoBehaviour:
   m_ObjectHideFlags: 0

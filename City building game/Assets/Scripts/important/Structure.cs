@@ -13,6 +13,9 @@ public class Structure : MonoBehaviour
 
     void Start()
     {
+        Vector2 v = GridManager.Instance.getPositionOnGrid(new Vector2(transform.position.x, transform.position.z));
+        x = (int)v.x;
+        y = (int)v.y;
     }
     public void kys()
     {

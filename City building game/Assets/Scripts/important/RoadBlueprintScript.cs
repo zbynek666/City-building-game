@@ -42,6 +42,12 @@ public class RoadBlueprintScript : MonoBehaviour
             else if (GridManager.Instance.getOnPosition(gridPosition) == null)
             {
                 placeRoad(finalDistance);
+                for (int i = 0; i < bluePrints.Count; i++)
+                {
+                    Destroy(bluePrints[i]);
+
+                }
+                bluePrints.Clear();
                 Destroy(gameObject);
             }
             else
@@ -233,6 +239,7 @@ public class RoadBlueprintScript : MonoBehaviour
             bluePrints.Clear();
         }
 
+        GridManager.Instance.onBuild.Invoke();
 
     }
     private void createRoad(int x, int y)
