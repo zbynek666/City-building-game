@@ -5,49 +5,100 @@ using UnityEngine;
 public class Road : Structure
 {
     public Mesh[] curvys = new Mesh[3];
+
+    public bool connected { get; private set; }
     public Road()
     {
         width = 1;
         height = 1;
+        connected = false;
+
+
+
+        connected = isPlaceByDefault;
+
+
+
+
     }
+
     void Start()
     {
+        base.Start();
+        checkCurvy();
 
-        GridManager.Instance.onBuild.AddListener(checkCurvy);
+
+        GridManager.Instance.beforeBuild.AddListener(disconnect);
+
+        GridManager.Instance.onBuild.AddListener(check);
+
+        disconnect();
+        foreach (Structure s in getNeighbors())
+        {
+            if (s != null && s.GetType() == typeof(Road))
+            {
+                Road r = (Road)s;
+                if (r.connected == true)
+                {
+                    connect();
+                }
+            }
+        }
+
         //curvys[0] = gameObject.GetComponent<MeshFilter>().mesh;
+        //GameObject g = Instantiate(new emp, transform.position, transform.rotation);
+
+
+
+
     }
-    public void checkCurvy()
+    private void check()
     {
+        checkCurvy();
+
+
+
+        if (isPlaceByDefault)
+        {
+            connected = true;
+
+            foreach (Structure s in getNeighbors())
+            {
+                if (s != null && s.GetType() == typeof(Road))
+                {
+                    Road r = (Road)s;
+                    if (r.connected == false)
+                    {
+                        r.connect();
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
+    }
+
+    private void checkCurvy()
+    {
+
+
+
         bool[] neighbors = new bool[4] { false, false, false, false };
         int neighbor = 0;
-
-        Structure str = GridManager.Instance.getOnPosition(new Vector2(x + 1, y));
-
-        if (str != null && str.GetType() == typeof(Road))
+        Structure[] str = getNeighbors();
+        for (int i = 0; i < str.Length; i++)
         {
-            neighbors[0] = true;
+            if (str[i] != null && str[i].GetType() == typeof(Road))
+            {
+                neighbors[i] = true;
+            }
         }
 
-        str = GridManager.Instance.getOnPosition(new Vector2(x - 1, y));
 
-        if (str != null && str.GetType() == typeof(Road))
-        {
-            neighbors[1] = true;
-        }
-
-        str = GridManager.Instance.getOnPosition(new Vector2(x, y - 1));
-
-        if (str != null && str.GetType() == typeof(Road))
-        {
-            neighbors[2] = true;
-        }
-
-        str = GridManager.Instance.getOnPosition(new Vector2(x, y + 1));
-
-        if (str != null && str.GetType() == typeof(Road))
-        {
-            neighbors[3] = true;
-        }
 
         foreach (bool s in neighbors)
         {
@@ -144,8 +195,37 @@ public class Road : Structure
 
 
     }
-    public void kys()
+    public void connect()
     {
+        connected = true;
+
+        changeIcon(null);
+        foreach (Structure s in getNeighbors())
+        {
+            if (s != null && s.GetType() == typeof(Road))
+            {
+                Road r = (Road)s;
+                if (r.connected == false)
+                {
+                    r.connect();
+                }
+            }
+        }
 
     }
+    public void disconnect()
+    {
+        if (!isPlaceByDefault)
+        {
+            connected = false;
+            Texture2D tex = new Texture2D(100, 100);
+
+            Sprite mySprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100.0f);
+            changeIcon(mySprite);
+
+        }
+
+    }
+
+
 }

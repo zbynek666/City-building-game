@@ -227,11 +227,15 @@ public class RoadBlueprintScript : MonoBehaviour
         if (kys && GlobalVariables.money >= v.Length * 100)
         {
             GlobalVariables.money -= v.Length * 100;
-            foreach (Vector2 r in v)
+            /*foreach (Vector2 r in v)
             {
 
-                createRoad((int)r.x, (int)r.y);
-            }
+                 createRoad((int)r.x, (int)r.y);
+            }*/
+            GridManager.Instance.createRoad(v, finalRot, prefab);
+
+
+
             for (int i = 0; i < bluePrints.Count; i++)
             {
                 Destroy(bluePrints[i]);
@@ -239,7 +243,6 @@ public class RoadBlueprintScript : MonoBehaviour
             bluePrints.Clear();
         }
 
-        GridManager.Instance.onBuild.Invoke();
 
     }
     private void createRoad(int x, int y)
@@ -260,4 +263,5 @@ public class RoadBlueprintScript : MonoBehaviour
         s.y = y;
         GridManager.Instance.addToPosition(s.x, s.y, s);
     }
+
 }

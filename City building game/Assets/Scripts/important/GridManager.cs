@@ -12,13 +12,18 @@ public class GridManager : MonoBehaviour
     public int gridsize = 10;
     public int width = 150;
     public int height = 150;
-    public UnityEvent onBuild;
+    public UnityEvent beforeBuild = new UnityEvent();
+    public UnityEvent onBuild = new UnityEvent();
+
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            g = new Grid(width, height, gridsize, linePrefub, this.transform);
+
             DontDestroyOnLoad(gameObject);
+
         }
         else
         {
@@ -27,9 +32,7 @@ public class GridManager : MonoBehaviour
     }
     void Start()
     {
-        g = new Grid(width, height, gridsize, linePrefub, this.transform);
-        if (onBuild == null)
-            onBuild = new UnityEvent();
+
     }
 
     public void addToPosition(int x, int y, Structure ob)
@@ -43,12 +46,14 @@ public class GridManager : MonoBehaviour
                 if (g.gridArray[x, y] != null)
                 {
                     Destroy(g.gridArray[x, y].gameObject);
-                    Debug.Log("destroy");
+                    //Debug.Log("destroy");
 
                 }
                 g.gridArray[x, y] = ob;
             }
         }
+        beforeBuild.Invoke();
+
         onBuild.Invoke();
 
     }
@@ -164,6 +169,96 @@ public class GridManager : MonoBehaviour
         }
         return null;
     }
+    public void createRoad(Vector2[] v, int finalRot, GameObject prefab)
+    {
+        int rot = 0;
+        if (finalRot == 1 || finalRot == 3)
+        {
+            rot = 1;
+        }
+        foreach (Vector2 r in v)
+        {
+            int x = (int)r.x;
+            int y = (int)r.y;
+            GameObject go = Instantiate(prefab, new Vector3(x * GridManager.Instance.gridsize, 0,
+            y * GridManager.Instance.gridsize), Quaternion.Euler(new Vector3(0, (rot * 90), 0)));
+
+
+            //smoke
+            Instantiate(GameManager.Instance.placeSmoke, new Vector3(x * GridManager.Instance.gridsize, 0,
+                y * GridManager.Instance.gridsize), new Quaternion());
+
+            Structure s = go.GetComponent<Structure>();
+            s.x = x;
+            s.y = y;
+            //GridManager.Instance.addToPosition(s.x, s.y, s);
+
+
+
+            for (int i = 0; i < 1; i++)
+            {
+                for (int j = 0; j < 1; j++)
+                {
+                    if (g.gridArray[s.x, s.y] != null)
+                    {
+                        Destroy(g.gridArray[s.x, s.y].gameObject);
+                        //Debug.Log("destroy");
+
+                    }
+                    g.gridArray[s.x, s.y] = s;
+                }
+            }
+
+        }
+        beforeBuild.Invoke();
+
+        onBuild.Invoke();
+
+
+    }
+    public List<Structure> getInRange(RangeBuilding rb)
+    {
+
+        int plusX = rb.x;
+        int plusY = rb.y;
+        int rad = rb.range;
+        List<Structure> strInrange = new List<Structure>();
+
+
+        for (int i = 0; i < width - 1; i++)
+        {
+            for (int j = 0; j < height - 1; j++)
+            {
+                if (Math.Pow(i - rad / 2, 2) + Math.Pow(j - rad / 2, 2) <= Math.Pow(rad / 2, 2))
+                {
+                    int x = i - (rad / 2) + plusX;
+                    int y = j - (rad / 2) + plusY;
+                    Structure str = g.AtPosition(x, y);
+                    if (str != null && str != rb)
+                    {
+
+                        bool unicat = true;
+                        foreach (Structure s in strInrange)
+                        {
+                            if (s == str)
+                            {
+                                unicat = false;
+                                break;
+                            }
+                        }
+                        if (unicat)
+                        {
+                            strInrange.Add(str);
+
+                        }
+                    }
+
+                }
+            }
+        }
+        return strInrange;
+    }
+
 
 
 

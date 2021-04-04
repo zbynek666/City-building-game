@@ -4,9 +4,12 @@ using UnityEngine;
 
 public static class GlobalVariables
 {
-    private static int gridSize = 10;
     public static int money = 100000;
     public static int moneyIncome = 0;
     public static int population = 0;
-    public static int day = 355;
+
+    public static int day = 29;
+    public static int month = 12;
+    public static int year = 2000;
+
 }

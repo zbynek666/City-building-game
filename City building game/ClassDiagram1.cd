@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BuldingPlacementControler" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAABAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\buldingPlacementControler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Billbord" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\important\Billbord.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Blueprint_script" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACEAAgAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\important\Blueprint_script.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuldingButtonsManager" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAACAABEAAAAAAAAg=</HashCode>
+      <FileName>Assets\Scripts\important\BuldingButtonsManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraControl" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ggQAAAGCACAAAAAAAIAEgEEAQAAAAEAIAQAAAIAAAAA=</HashCode>
+      <FileName>Assets\Scripts\important\CameraControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="cameraRotation" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\important\cameraRotation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CJQAAAAEACAAABBAAIAMAAAAIAIAEQAAQAYAACEQIEA=</HashCode>
+      <FileName>Assets\Scripts\important\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GlobalVariables" Collapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAgAAAAAAAAAAAAAAAAAAAAAAgAAAAAAkAA=</HashCode>
+      <FileName>Assets\Scripts\important\GlobalVariables.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Grid" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAACAAQAQAAAQAAAAAAAAAAAAAAAAgAAAAE=</HashCode>
+      <FileName>Assets\Scripts\important\Grid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GridManager" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACACAAIACAQMgQAQgAIAAAAAAAAAgCIQAAACAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\important\GridManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="menu" Collapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAEAAAAAAIAAIgAAAAAAAAAAAAAAQAAQAIAAAAA=</HashCode>
+      <FileName>Assets\Scripts\important\menu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PopulationManager" Collapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABAAABCgAAAAQAAAAAAAAAAAAAQAAQAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\important\PopulationManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Residenc" Collapsed="true">
+    <Position X="4.75" Y="4" Width="1.5" />
+    <InheritanceLine Type="Structure" ManuallyRouted="true">
+      <Path>
+        <Point X="3.5" Y="1.191" />
+        <Point X="3.5" Y="1.994" />
+        <Point X="4.08" Y="1.994" />
+        <Point X="4.08" Y="3.625" />
+        <Point X="5.5" Y="3.625" />
+        <Point X="5.5" Y="4" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAABMAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\important\Residenc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Road" Collapsed="true">
+    <Position X="5.75" Y="2" Width="1.5" />
+    <InheritanceLine Type="Structure" ManuallyRouted="true">
+      <Path>
+        <Point X="3.5" Y="1.191" />
+        <Point X="3.5" Y="1.384" />
+        <Point X="6.5" Y="1.384" />
+        <Point X="6.5" Y="2" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAABAACAIAAAAgAAAAAAgACAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Assets\Scripts\important\Road.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoadBlueprintScript" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASiAAAAACFBIgAgAAAAAAIAAAAAAAAAAAAEAAAAAIA=</HashCode>
+      <FileName>Assets\Scripts\important\RoadBlueprintScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Structure" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAACACAAQAQAAAAAAACAAAAAAAAQBgAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\important\Structure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UI" Collapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAQAAAAAACAAACAQAAAAIAAQAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\important\UI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Zone" Collapsed="true">
+    <Position X="2.5" Y="4" Width="1.25" />
+    <InheritanceLine Type="Structure" ManuallyRouted="true">
+      <Path>
+        <Point X="3.5" Y="1.191" />
+        <Point X="3.5" Y="1.994" />
+        <Point X="3.336" Y="1.994" />
+        <Point X="3.336" Y="3.625" />
+        <Point X="3.125" Y="3.625" />
+        <Point X="3.125" Y="4" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>EAQAAAAAACAAAAAAAAAAAAAQAAAAAAAAAAQCAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\important\Zone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="zoneBlueprintScript" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAgAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\important\zoneBlueprintScript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="roadBuilder" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAECAAAgAgAEAAIAAAgCAAAgAABAAAAAJQAAA=</HashCode>
+      <FileName>Assets\Scripts\roadBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Building" Collapsed="true">
+    <Position X="1" Y="2.5" Width="1.5" />
+    <InheritanceLine Type="Structure" ManuallyRouted="true">
+      <Path>
+        <Point X="3.5" Y="1.191" />
+        <Point X="3.5" Y="1.279" />
+        <Point X="3.031" Y="1.279" />
+        <Point X="3.031" Y="1.994" />
+        <Point X="1.75" Y="1.994" />
+        <Point X="1.75" Y="2.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Assets\Scripts\important\Building.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RangeBuilding" Collapsed="true">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\important\RangeBuilding.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
