@@ -8,12 +8,14 @@ public class Blueprint_script : MonoBehaviour
     RaycastHit hit;
     Vector3 movepoint;
     public GameObject prefab;
+
+
     // Start is called before the first frame update
     void Start()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, 5000.0f, 1 << LayerMask.NameToLayer("Ground")))
         {
             transform.position = hit.point;
         }
@@ -24,7 +26,7 @@ public class Blueprint_script : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, 5000.0f, 1))
+        if (Physics.Raycast(ray, out hit, 5000.0f, 1 << LayerMask.NameToLayer("Ground")))
         {
             //set pivot to fit in square
             if (prefab.GetComponent<Structure>().width % 2 == 0 || prefab.GetComponent<Structure>().height % 2 == 0)

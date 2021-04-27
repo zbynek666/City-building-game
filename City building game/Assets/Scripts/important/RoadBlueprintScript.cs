@@ -15,6 +15,7 @@ public class RoadBlueprintScript : MonoBehaviour
     private int finalDistance;
     private int finalRot;
 
+
     public RoadBlueprintScript(GameObject p)
     {
         this.prefab = p;
@@ -59,7 +60,7 @@ public class RoadBlueprintScript : MonoBehaviour
         //visualizatin one in hand
         if (start == new Vector2(-1, -1))
         {
-            if (Physics.Raycast(ray, out hit, 5000.0f, 1))
+            if (Physics.Raycast(ray, out hit, 5000.0f, 1 << LayerMask.NameToLayer("Ground")))
             {
 
                 gridPosition = GridManager.Instance.getPositionOnGrid(new Vector2(hit.point.x, hit.point.z));
@@ -74,7 +75,7 @@ public class RoadBlueprintScript : MonoBehaviour
         else
         {
 
-            if (Physics.Raycast(ray, out hit, 5000.0f, 1))
+            if (Physics.Raycast(ray, out hit, 5000.0f, 1 << LayerMask.NameToLayer("Ground")))
             {
 
                 gridPosition = GridManager.Instance.getPositionOnGrid(new Vector2(hit.point.x, hit.point.z));

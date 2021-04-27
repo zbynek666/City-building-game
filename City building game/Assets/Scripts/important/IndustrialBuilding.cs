@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Building : Structure
+public class IndustrialBuilding : BasicBuilding
 {
     // Start is called before the first frame update
-    public bool requireRoad;
+
 
     void Start()
     {
         base.Start();
-
-        gameObject.AddComponent<MeshCollider>();
-
+        population = maxPopulation;
 
     }
 

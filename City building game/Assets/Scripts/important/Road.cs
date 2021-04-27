@@ -6,50 +6,44 @@ public class Road : Structure
 {
     public Mesh[] curvys = new Mesh[3];
 
-    public bool connected { get; private set; }
+    public bool[] connections = new bool[3];
+
     public Road()
     {
         width = 1;
         height = 1;
-        connected = false;
+        for (int i = 0; i < connections.Length; i++)
+        {
+            connections[i] = false;
+        }
+
+        connections[0] = isPlaceByDefault;
 
 
 
-        connected = isPlaceByDefault;
+    }
+    void Awake()
+    {
+        GridManager.Instance.beforeBuild.AddListener(disconnect);
 
-
-
-
+        GridManager.Instance.onBuild.AddListener(check);
     }
 
     void Start()
     {
         base.Start();
-        checkCurvy();
 
 
-        GridManager.Instance.beforeBuild.AddListener(disconnect);
 
-        GridManager.Instance.onBuild.AddListener(check);
 
-        disconnect();
-        foreach (Structure s in getNeighbors())
-        {
-            if (s != null && s.GetType() == typeof(Road))
-            {
-                Road r = (Road)s;
-                if (r.connected == true)
-                {
-                    connect();
-                }
-            }
-        }
+
+
 
         //curvys[0] = gameObject.GetComponent<MeshFilter>().mesh;
         //GameObject g = Instantiate(new emp, transform.position, transform.rotation);
 
 
-
+        checkCurvy();
 
     }
     private void check()
@@ -57,19 +51,27 @@ public class Road : Structure
         checkCurvy();
 
 
-
         if (isPlaceByDefault)
         {
-            connected = true;
+            connections[0] = true;
 
             foreach (Structure s in getNeighbors())
             {
+
                 if (s != null && s.GetType() == typeof(Road))
                 {
                     Road r = (Road)s;
-                    if (r.connected == false)
+                    bool same = true;
+                    for (int i = 0; i < connections.Length; i++)
                     {
-                        r.connect();
+                        if (connections[i] == true && r.connections[i] == false)
+                        {
+                            same = false;
+                        }
+                    }
+                    if (!same)
+                    {
+                        r.connect(connections);
                     }
                 }
             }
@@ -195,19 +197,31 @@ public class Road : Structure
 
 
     }
-    public void connect()
+    public void connect(bool[] conns)
     {
-        connected = true;
 
+        for (int i = 0; i < connections.Length; i++)
+        {
+            connections[i] = conns[i];
+        }
         changeIcon(null);
         foreach (Structure s in getNeighbors())
         {
+
             if (s != null && s.GetType() == typeof(Road))
             {
                 Road r = (Road)s;
-                if (r.connected == false)
+                bool same = true;
+                for (int i = 0; i < connections.Length; i++)
                 {
-                    r.connect();
+                    if (connections[i] == true && r.connections[i] == false)
+                    {
+                        same = false;
+                    }
+                }
+                if (!same)
+                {
+                    r.connect(connections);
                 }
             }
         }
@@ -217,7 +231,11 @@ public class Road : Structure
     {
         if (!isPlaceByDefault)
         {
-            connected = false;
+            for (int i = 0; i < connections.Length; i++)
+            {
+                connections[i] = false;
+            }
+
             Texture2D tex = new Texture2D(100, 100);
 
             Sprite mySprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100.0f);

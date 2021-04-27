@@ -9,12 +9,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    public GameObject moneyLabel;
-    public GameObject escMenu;
 
-    public GameObject populationLabel;
-    public GameObject moneyIncameLabel;
-    public GameObject dateLabel;
 
     public GameObject placeSmoke;
 
@@ -22,9 +17,11 @@ public class GameManager : MonoBehaviour
     public UnityEvent onDay = new UnityEvent();
     public UnityEvent onMonths = new UnityEvent();
 
-    private TextMeshProUGUI populationLabelText;
-    private TextMeshProUGUI moneyIncameLabelText;
-    private TextMeshProUGUI dateLabelText;
+
+
+    private PopulationManager populationManager = new PopulationManager();
+    private UIMandager uIMandager = UIMandager.Instance;
+
 
 
     private void Awake()
@@ -42,9 +39,9 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        populationLabelText = populationLabel.GetComponent<TextMeshProUGUI>();
-        moneyIncameLabelText = moneyIncameLabel.GetComponent<TextMeshProUGUI>();
-        dateLabelText = dateLabel.GetComponent<TextMeshProUGUI>();
+        populationManager.UpdatePopulation();
+
+        UIMandager.Instance.updateLabels();
     }
 
     public void endOfDay()
@@ -67,43 +64,28 @@ public class GameManager : MonoBehaviour
             GlobalVariables.day = 0;
         }
         GlobalVariables.day++;
-        updateLabels();
+        populationManager.UpdatePopulation();
+        UIMandager.Instance.updateLabels();
 
     }
 
     private void endOfMonths()
     {
         onMonths.Invoke();
-        updateLabels();
+        UIMandager.Instance.updateLabels();
     }
 
-    private void updateLabels()
-    {
-        dateLabelText.text = GlobalVariables.year + "/";
-        if (GlobalVariables.month < 10)
-        {
-            dateLabelText.text += 0 + "" + GlobalVariables.month + "/";
-        }
-        else
-        {
-            dateLabelText.text += GlobalVariables.month + "/";
 
-        }
-
-        if (GlobalVariables.day < 10)
-        {
-            dateLabelText.text += 0 + "" + GlobalVariables.day;
-        }
-        else
-        {
-            dateLabelText.text += GlobalVariables.day;
-        }
-    }
 
     private int calculateIncome()
     {
         return 300;
     }
 
+    public Vector3 getZoneDemand()
+    {
+
+        return new Vector3(populationManager.residentDemand, populationManager.commercialDemand, populationManager.industrialDemand);
+    }
 
 }

@@ -37,7 +37,7 @@ public class Zone : Structure
     {
         GameObject g = Instantiate(building, transform.position, transform.rotation);
         Vector2 pos = GridManager.Instance.getPositionOnGrid(new Vector2(transform.position.x, transform.position.z));
-        GridManager.Instance.addToPosition((int)pos.x, (int)pos.y, g.GetComponent<Residenc>());
+        GridManager.Instance.addToPosition((int)pos.x, (int)pos.y, g.GetComponent<ResidencBulding>());
 
     }
 }

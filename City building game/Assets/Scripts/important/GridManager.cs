@@ -7,6 +7,8 @@ using UnityEngine.Events;
 public class GridManager : MonoBehaviour
 {
     public static GridManager Instance { get; private set; }
+    private static GridManager instance;
+
     public GameObject linePrefub;
     public Grid g;
     public int gridsize = 10;
@@ -30,6 +32,7 @@ public class GridManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     void Start()
     {
 
@@ -134,40 +137,38 @@ public class GridManager : MonoBehaviour
     public List<Structure> getTypeOfObject<T>()
     {
 
-        if (typeof(T) == typeof(Residenc))
+
+
+        List<Structure> r = new List<Structure>();
+        for (int i = 0; i < g.gridArray.GetLength(0); i++)
         {
-
-            List<Structure> r = new List<Structure>();
-            for (int i = 0; i < g.gridArray.GetLength(0); i++)
+            for (int j = 0; j < g.gridArray.GetLength(1); j++)
             {
-                for (int j = 0; j < g.gridArray.GetLength(1); j++)
+
+
+                if (g.AtPosition(i, j) != null && g.AtPosition(i, j).GetType() == typeof(T))
                 {
-
-
-                    if (g.AtPosition(i, j) != null && g.AtPosition(i, j).GetType() == typeof(Residenc))
+                    bool isIn = false;
+                    for (int k = 0; k < r.Count; k++)
                     {
-                        bool isIn = false;
-                        for (int k = 0; k < r.Count; k++)
+                        if (r[k] == g.AtPosition(i, j))
                         {
-                            if (r[k] == g.AtPosition(i, j))
-                            {
-                                isIn = true;
-                            }
+                            isIn = true;
                         }
-                        if (!isIn)
-                        {
-                            r.Add(g.AtPosition(i, j));
-
-                        }
+                    }
+                    if (!isIn)
+                    {
+                        r.Add(g.AtPosition(i, j));
 
                     }
 
-
                 }
+
+
             }
-            return r;
         }
-        return null;
+        return r;
+
     }
     public void createRoad(Vector2[] v, int finalRot, GameObject prefab)
     {

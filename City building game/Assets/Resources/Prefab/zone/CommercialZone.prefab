@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6174423131391738844}
   - component: {fileID: 8185267414102554252}
   m_Layer: 2
-  m_Name: industrialZone
+  m_Name: CommercialZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d689ab316c1c10a4c80e61731a9dbb0e, type: 2}
+  - {fileID: 2100000, guid: fa6a52adc89ca944a930b167e9df1502, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,6 +113,6 @@ MonoBehaviour:
   x: 0
   y: 0
   isPlaceByDefault: 0
-  building: {fileID: 4681788876286269319, guid: 594938fe37e82b648aae4b89aece4218,
+  building: {fileID: 8035999402500623330, guid: c85081d850ade8b429318d60b0be6920,
     type: 3}
   zone: 0

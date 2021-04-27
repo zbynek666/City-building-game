@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 6174423131391738846}
   - component: {fileID: 6174423131391738847}
   - component: {fileID: 6174423131391738844}
-  - component: {fileID: 8185267414102554252}
   m_Layer: 2
-  m_Name: industrialZone
+  m_Name: industrialZoneBlueprint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d689ab316c1c10a4c80e61731a9dbb0e, type: 2}
+  - {fileID: 2100000, guid: fd56f5aedcdc422479f47d58fab39fcf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,23 +95,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8185267414102554252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6174423131391738845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c0dd54096dec6b40ab3d58683cb6179, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  width: 0
-  height: 0
-  x: 0
-  y: 0
-  isPlaceByDefault: 0
-  building: {fileID: 4681788876286269319, guid: 594938fe37e82b648aae4b89aece4218,
-    type: 3}
-  zone: 0

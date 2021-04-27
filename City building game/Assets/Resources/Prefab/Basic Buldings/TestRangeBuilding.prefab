@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1902567704410900918}
   - component: {fileID: 1902567704410900917}
   - component: {fileID: 8665659876180889333}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: TestRangeBuilding
   m_TagString: Untagged
   m_Icon: {fileID: 0}

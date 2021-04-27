@@ -8,6 +8,8 @@ public class zoneBlueprintScript : MonoBehaviour
     public GameObject prefab;
     RaycastHit hit;
 
+
+
     void Start()
     {
 
@@ -18,7 +20,7 @@ public class zoneBlueprintScript : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, 5000.0f, 1))
+        if (Physics.Raycast(ray, out hit, 5000.0f, 1 << LayerMask.NameToLayer("Ground")))
         {
             Vector2 s = GridManager.Instance.getRealPosition(GridManager.Instance.getPositionOnGrid(new Vector2(hit.point.x, hit.point.z)));
             transform.position = new Vector3(s.x, 0, s.y);

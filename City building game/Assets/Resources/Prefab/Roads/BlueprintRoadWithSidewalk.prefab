@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2191575871969613875}
   - component: {fileID: 6145608661500847783}
   - component: {fileID: 838609923956768659}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: BlueprintRoadWithSidewalk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,6 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -83,6 +84,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &6145608661500847783
 MeshCollider:
   m_ObjectHideFlags: 0

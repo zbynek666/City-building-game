@@ -12,16 +12,6 @@ public class Structure : MonoBehaviour
 
     public bool isPlaceByDefault;
 
-    public Structure()
-    {
-
-    }
-
-    void kys()
-    {
-        Debug.Log("kys");
-    }
-
 
     public void Start()
     {

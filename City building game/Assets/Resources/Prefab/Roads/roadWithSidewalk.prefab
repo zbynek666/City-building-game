@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2191575871969613875}
   - component: {fileID: 8237532190178913818}
   - component: {fileID: 6000003057337258841}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: roadWithSidewalk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  vrata: {fileID: 21300000, guid: 41aabf6da997dc04b88f0f431071c21d, type: 3}
+  connections: 000000
 --- !u!114 &6000003057337258841
 MonoBehaviour:
   m_ObjectHideFlags: 0
