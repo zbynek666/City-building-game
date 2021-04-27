@@ -54,6 +54,7 @@ public class Blueprint_script : MonoBehaviour
             {
                 GlobalVariables.money -= 500;
                 GameObject g = Instantiate(prefab, transform.position, transform.rotation);
+
                 Structure s = g.GetComponent<Structure>();
                 s.x = (int)transform.position.x / GridManager.Instance.gridsize;
                 s.y = (int)transform.position.z / GridManager.Instance.gridsize;

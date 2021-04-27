@@ -8,6 +8,8 @@ public class Road : Structure
 
     public bool[] connections = new bool[3];
 
+
+
     public Road()
     {
         width = 1;
@@ -199,7 +201,6 @@ public class Road : Structure
     }
     public void connect(bool[] conns)
     {
-
         for (int i = 0; i < connections.Length; i++)
         {
             connections[i] = conns[i];
@@ -225,6 +226,7 @@ public class Road : Structure
                 }
             }
         }
+
 
     }
     public void disconnect()

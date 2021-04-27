@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangeBuilding : Building
+public abstract class RangeBuilding : Building
 {
     public int range;
     private List<Structure> StructuresInRange = new List<Structure>();
@@ -14,25 +14,25 @@ public class RangeBuilding : Building
         {
             Debug.LogError("RangeBuilding have wrong size");
         }
-        GridManager.Instance.onBuild.AddListener(setStructuresInRange);
-        setStructuresInRange();
+        set();
 
 
     }
 
     // Update is called once per frame
-    protected void setStructuresInRange()
+
+    protected override void clear()
     {
-        List<Structure> strInRange = GridManager.Instance.getInRange(this);
+        base.clear();
+        StructuresInRange.Clear();
+    }
+
+    protected override void set()
+    {
+        base.set();
+        StructuresInRange = GridManager.Instance.getInRange(this);
 
     }
-    protected virtual void dayRangeEffect()
-    {
 
-    }
-    protected virtual void monthsRangeEffect()
-    {
-
-    }
 
 }

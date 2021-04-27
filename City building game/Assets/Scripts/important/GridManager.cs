@@ -16,6 +16,8 @@ public class GridManager : MonoBehaviour
     public int height = 150;
     public UnityEvent beforeBuild = new UnityEvent();
     public UnityEvent onBuild = new UnityEvent();
+    public UnityEvent afterRoadConnections = new UnityEvent();
+
 
     private void Awake()
     {
@@ -46,6 +48,7 @@ public class GridManager : MonoBehaviour
         {
             for (int j = 0; j < 1; j++)
             {
+
                 if (g.gridArray[x, y] != null)
                 {
                     Destroy(g.gridArray[x, y].gameObject);
@@ -55,9 +58,8 @@ public class GridManager : MonoBehaviour
                 g.gridArray[x, y] = ob;
             }
         }
-        beforeBuild.Invoke();
 
-        onBuild.Invoke();
+        callEvents();
 
     }
     public Structure getOnPosition(Vector2 pos)
@@ -211,9 +213,9 @@ public class GridManager : MonoBehaviour
             }
 
         }
-        beforeBuild.Invoke();
 
-        onBuild.Invoke();
+        callEvents();
+
 
 
     }
@@ -260,6 +262,14 @@ public class GridManager : MonoBehaviour
         return strInrange;
     }
 
+    public void callEvents()
+    {
+        beforeBuild.Invoke();
+
+        onBuild.Invoke();
+
+        afterRoadConnections.Invoke();
+    }
 
 
 

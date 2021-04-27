@@ -34,7 +34,10 @@ public class UIMandager : MonoBehaviour
     private List<Button> categoriesBtns = new List<Button>();
     private List<GameObject> categori = new List<GameObject>();
 
-    public GameObject BuildingInfo;
+    public GameObject BuildingInfoPanel;
+
+
+
 
     private void Awake()
     {
@@ -130,8 +133,25 @@ public class UIMandager : MonoBehaviour
 
     }
 
-    public void showBuildingInfo()
+    public void showBuildingInfo(Building bl)
     {
-        BuildingInfo.SetActive(!BuildingInfo.active);
+        if (bl is BasicBuilding)
+        {
+            writeBasicBuildingInfo((BasicBuilding)bl);
+        }
+        else
+        {
+        }
+        BuildingInfoPanel.SetActive(true);
+
+    }
+    public void hideBuildingInfo()
+    {
+        BuildingInfoPanel.SetActive(false);
+    }
+    private void writeBasicBuildingInfo(BasicBuilding bb)
+    {
+
+        BuildingInfoPanel.transform.Find("info").GetComponent<TextMeshProUGUI>().text = bb.info() + "";
     }
 }

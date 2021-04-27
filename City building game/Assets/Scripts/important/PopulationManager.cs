@@ -51,7 +51,6 @@ public class PopulationManager : MonoBehaviour
 
 
         List<Structure> str = GridManager.Instance.getTypeOfObject<Zone>();
-        Debug.Log(str.Count);
 
         for (int i = 0; i < str.Count; i++)
         {

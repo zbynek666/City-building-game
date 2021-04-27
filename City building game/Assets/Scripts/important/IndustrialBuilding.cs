@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class IndustrialBuilding : BasicBuilding
 {
+
+
     // Start is called before the first frame update
 
 
@@ -19,4 +21,24 @@ public class IndustrialBuilding : BasicBuilding
     {
 
     }
+    protected override void clear()
+    {
+        base.clear();
+
+    }
+    protected override void set()
+    {
+        base.set();
+
+    }
+
+    protected override void onDay()
+    {
+    }
+
+    protected override void OnMonths()
+    {
+    }
+
+
 }
