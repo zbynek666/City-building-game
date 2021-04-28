@@ -13,7 +13,7 @@ public class Structure : MonoBehaviour
     public bool isPlaceByDefault;
 
 
-    public void Start()
+    public virtual void Start()
     {
 
         Vector2 v = GridManager.Instance.getPositionOnGrid(new Vector2(transform.position.x, transform.position.z));

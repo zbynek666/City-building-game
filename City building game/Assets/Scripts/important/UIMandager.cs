@@ -151,7 +151,12 @@ public class UIMandager : MonoBehaviour
     }
     private void writeBasicBuildingInfo(BasicBuilding bb)
     {
+        bool[] info = bb.info();
+        BuildingInfoPanel.transform.Find("info").GetComponent<TextMeshProUGUI>().text = "";
+        for (int i = 0; i < info.Length; i++)
+        {
+            BuildingInfoPanel.transform.Find("info").GetComponent<TextMeshProUGUI>().text += info[i] + " \u000a";
 
-        BuildingInfoPanel.transform.Find("info").GetComponent<TextMeshProUGUI>().text = bb.info() + "";
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ public class Road : Structure
 
     public bool[] connections = new bool[3];
 
+    public CarWayPoint carWayPoint;
 
 
     public Road()
@@ -47,7 +49,19 @@ public class Road : Structure
 
         checkCurvy();
 
+        createCarWayPoint();
+
     }
+
+    private void createCarWayPoint()
+    {
+        GameObject g = new GameObject("WayPoint");
+        g.transform.parent = gameObject.transform;
+        g.transform.localPosition = new Vector3();
+        carWayPoint = g.AddComponent<CarWayPoint>();
+
+    }
+
     private void check()
     {
         checkCurvy();
@@ -248,5 +262,21 @@ public class Road : Structure
 
     }
 
+    public List<CarWayPoint> GetConnectedWayPoints()
+    {
+        Structure[] nei = getNeighbors();
+        List<CarWayPoint> wayPoints = new List<CarWayPoint>();
+        foreach (Structure s in nei)
+        {
+
+            if (s is Road)
+            {
+                wayPoints.Add(((Road)s).carWayPoint);
+
+            }
+        }
+
+        return wayPoints;
+    }
 
 }

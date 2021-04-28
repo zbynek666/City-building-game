@@ -9,10 +9,11 @@ public abstract class NeedsProvidingBuilding : Building
     public enum typeOfConnection { conn, mainBuilding, power, water }
     public typeOfConnection SelectedType;
 
-    void Start()
+    protected void Start()
     {
         base.Start();
-
+        GridManager.Instance.onBuild.AddListener(connect);
+        GridManager.Instance.callEvents();
     }
 
     // Update is called once per frame

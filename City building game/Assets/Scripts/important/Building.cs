@@ -6,12 +6,20 @@ public abstract class Building : Structure
 {
     // Start is called before the first frame update
     public bool requireRoad = false;
+    public bool requireMainCon = false;
     public bool requirePower = false;
+    public bool requireWater = false;
+
+
 
     public bool active;
 
     protected bool hasRoad;
+    protected bool hasMainCon;
     protected bool hasPower;
+    protected bool hasWater;
+
+
 
     protected void Start()
     {

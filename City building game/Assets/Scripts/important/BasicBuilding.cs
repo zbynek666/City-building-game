@@ -13,9 +13,9 @@ public abstract class BasicBuilding : Building
     {
         base.Start();
     }
-    public bool info()
+    public bool[] info()
     {
-        return hasPower;
+        return new bool[] { hasRoad, hasMainCon, hasPower, hasWater };
     }
 
     // Update is called once per frame

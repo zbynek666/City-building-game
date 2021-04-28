@@ -122,6 +122,10 @@ MonoBehaviour:
   x: 0
   y: 0
   isPlaceByDefault: 0
-  requireRoad: 0
+  requireRoad: 1
+  requireMainCon: 0
+  requirePower: 1
+  requireWater: 0
+  active: 0
   maxPopulation: 0
   population: 0
