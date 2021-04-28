@@ -54,7 +54,7 @@ public abstract class Building : Structure
             Structure[] nei = getNeighbors();
             foreach (Structure s in nei)
             {
-                if (s is Road && ((Road)s).connections[1] == true)
+                if (s is Road && ((Road)s).connections[2] == true)
                 {
                     hasPower = true;
                     break;

@@ -116,3 +116,4 @@ MonoBehaviour:
   requireRoad: 0
   requirePower: 0
   active: 0
+  SelectedType: 2

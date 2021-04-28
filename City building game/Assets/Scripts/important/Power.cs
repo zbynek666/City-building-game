@@ -33,15 +33,5 @@ public class Power : NeedsProvidingBuilding
     protected override void set()
     {
     }
-    private void connect()
-    {
-        Structure[] nei = getNeighbors();
-        foreach (Structure s in nei)
-        {
-            if (s is Road)
-            {
-                ((Road)s).connect(new bool[] { false, true, false });
-            }
-        }
-    }
+
 }

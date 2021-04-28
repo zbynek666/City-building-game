@@ -226,6 +226,7 @@ public class Road : Structure
                 }
             }
         }
+        Debug.Log("road connect" + conns[2]);
 
 
     }

@@ -2,26 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class NeedsProvidingBuilding : Building
+public class MainBuilding : Building
 {
-    // Start is called before the first frame update
-    int connectionSlot = -1;
+    int connectionSlot = 1;
     public enum typeOfConnection { conn, mainBuilding, power, water }
     public typeOfConnection SelectedType;
 
+    // Start is called before the first frame update
     void Start()
-    {
-        base.Start();
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    protected void selectConnection()
     {
         if (SelectedType == typeOfConnection.conn)
         {
@@ -43,12 +31,14 @@ public abstract class NeedsProvidingBuilding : Building
 
         }
     }
-    protected void connect()
+
+    // Update is called once per frame
+    void Update()
     {
-        if (connectionSlot == -1)
-        {
-            selectConnection();
-        }
+
+    }
+    private void connect()
+    {
         Structure[] nei = getNeighbors();
         foreach (Structure s in nei)
         {
@@ -63,9 +53,9 @@ public abstract class NeedsProvidingBuilding : Building
                     }
                 }
                 ((Road)s).connect(con);
+
+
             }
         }
-        Debug.Log("connect to road " + connectionSlot);
-
     }
 }
