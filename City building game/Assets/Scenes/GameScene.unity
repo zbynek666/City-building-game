@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16588
+  m_Name: pb_Mesh16614
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5000,7 +5000,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   connections: 000000
-  carWayPoint: {fileID: 0}
+  carWayPoint1: {fileID: 0}
+  carWayPoint2: {fileID: 0}
 --- !u!23 &149481885
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5095,6 +5096,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c173f41a95c9ecb40a2a2f4ead3920de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  secondWayPoint: {fileID: 0}
+  side: 0
 --- !u!4 &149749631
 Transform:
   m_ObjectHideFlags: 0
@@ -5107,7 +5110,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &167784574
 GameObject:
@@ -11169,7 +11172,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   connections: 000000
-  carWayPoint: {fileID: 0}
+  carWayPoint1: {fileID: 0}
+  carWayPoint2: {fileID: 0}
 --- !u!23 &428209267
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11687,118 +11691,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 516355378}
   m_CullTransparentMesh: 0
---- !u!1 &544837694
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 544837699}
-  - component: {fileID: 544837698}
-  - component: {fileID: 544837697}
-  - component: {fileID: 544837696}
-  - component: {fileID: 544837695}
-  m_Layer: 0
-  m_Name: car
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &544837695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544837694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42a360748565f8447bb8ec0b2f9b66c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NextWaypoint: {fileID: 149749630}
-  LastWaypoint: {fileID: 0}
-  startWayPoint: {fileID: 0}
-  speed: 3
---- !u!135 &544837696
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544837694}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &544837697
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544837694}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &544837698
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544837694}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &544837699
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544837694}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1123.1288, y: 0.67, z: 1940.5475}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &613257693
 GameObject:
   m_ObjectHideFlags: 0
@@ -16541,7 +16433,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   connections: 000000
-  carWayPoint: {fileID: 0}
+  carWayPoint1: {fileID: 0}
+  carWayPoint2: {fileID: 0}
 --- !u!23 &730201005
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -22382,7 +22275,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   connections: 000000
-  carWayPoint: {fileID: 0}
+  carWayPoint1: {fileID: 0}
+  carWayPoint2: {fileID: 0}
 --- !u!23 &1016821619
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27509,7 +27403,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   connections: 000000
-  carWayPoint: {fileID: 0}
+  carWayPoint1: {fileID: 0}
+  carWayPoint2: {fileID: 0}
 --- !u!23 &1301493900
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -32163,7 +32058,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   connections: 000000
-  carWayPoint: {fileID: 0}
+  carWayPoint1: {fileID: 0}
+  carWayPoint2: {fileID: 0}
 --- !u!23 &1429227837
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -37385,7 +37281,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   connections: 000000
-  carWayPoint: {fileID: 0}
+  carWayPoint1: {fileID: 0}
+  carWayPoint2: {fileID: 0}
 --- !u!23 &1615748700
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -41855,7 +41752,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   connections: 000000
-  carWayPoint: {fileID: 0}
+  carWayPoint1: {fileID: 0}
+  carWayPoint2: {fileID: 0}
 --- !u!23 &1638000798
 MeshRenderer:
   m_ObjectHideFlags: 0

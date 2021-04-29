@@ -9,7 +9,9 @@ public class Road : Structure
 
     public bool[] connections = new bool[3];
 
-    public CarWayPoint carWayPoint;
+    public CarWayPoint carWayPoint1;
+    public CarWayPoint carWayPoint2;
+
 
 
     public Road()
@@ -55,10 +57,22 @@ public class Road : Structure
 
     private void createCarWayPoint()
     {
-        GameObject g = new GameObject("WayPoint");
-        g.transform.parent = gameObject.transform;
-        g.transform.localPosition = new Vector3();
-        carWayPoint = g.AddComponent<CarWayPoint>();
+        GameObject g1 = new GameObject("WayPoint1");
+        g1.transform.parent = gameObject.transform;
+        g1.transform.localPosition = new Vector3(0, 0, -2);
+        carWayPoint1 = g1.AddComponent<CarWayPoint>();
+        carWayPoint1.side = 1;
+
+        GameObject g2 = new GameObject("WayPoint2");
+        g2.transform.parent = gameObject.transform;
+        g2.transform.localPosition = new Vector3(0, 0, 2);
+        carWayPoint2 = g2.AddComponent<CarWayPoint>();
+        carWayPoint2.side = 2;
+
+        carWayPoint2.secondWayPoint = carWayPoint1;
+        carWayPoint1.secondWayPoint = carWayPoint2;
+
+
 
     }
 
@@ -271,7 +285,8 @@ public class Road : Structure
 
             if (s is Road)
             {
-                wayPoints.Add(((Road)s).carWayPoint);
+                wayPoints.Add(((Road)s).carWayPoint1);
+
 
             }
         }

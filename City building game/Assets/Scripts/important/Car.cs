@@ -11,23 +11,59 @@ public class Car : MonoBehaviour
     public GameObject startWayPoint;
 
 
-    public float speed = 1.0f;
+    public float speed = 20;
+    private float actualSpeed;
+    public float rotationTime = 300;
 
     void Start()
     {
+        actualSpeed = speed;
         //NextWaypoint = startWayPoint.GetComponent<CarWayPoint>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        float step = speed * Time.deltaTime; // calculate distance to move
-        transform.position = Vector3.MoveTowards(transform.position, NextWaypoint.transform.position, step);
-        if (transform.position == NextWaypoint.transform.position)
+
+        if (NextWaypoint != null && LastWaypoint != null)
         {
-            CarWayPoint c = NextWaypoint;
-            NextWaypoint = NextWaypoint.getNextWaypoint(LastWaypoint);
-            LastWaypoint = c;
+            transform.position = Vector3.MoveTowards(transform.position, NextWaypoint.transform.position, actualSpeed * Time.deltaTime);
+
+            Vector3 targetPoint = NextWaypoint.transform.position;
+
+            var lookPos = targetPoint - transform.position;
+            //lookPos.x = 0;
+
+
+            var rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationTime * Time.deltaTime);
+
+
+            if (transform.position == NextWaypoint.transform.position)
+            {
+
+                CarWayPoint c = NextWaypoint;
+                var result = NextWaypoint.getNextWaypoint(LastWaypoint);
+                NextWaypoint = result.Item1;
+                if (result.Item2)
+                {
+                    actualSpeed = speed / 2;
+                    LastWaypoint = c.secondWayPoint;
+
+                }
+                else
+                {
+                    LastWaypoint = c;
+                    actualSpeed = speed;
+                }
+                /*
+                CarWayPoint c = NextWaypoint;
+                var result = NextWaypoint.getNextWaypoint(LastWaypoint);
+                NextWaypoint = result.Item1;
+                LastWaypoint = c;
+                */
+
+            }
         }
     }
 }

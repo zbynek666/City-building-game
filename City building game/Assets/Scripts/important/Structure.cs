@@ -51,7 +51,7 @@ public class Structure : MonoBehaviour
         icon.sprite = s;
     }
 
-    protected Structure[] getNeighbors()
+    public Structure[] getNeighbors()
     {
         Structure[] s = new Structure[4];
 
