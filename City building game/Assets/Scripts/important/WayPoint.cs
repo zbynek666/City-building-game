@@ -1,11 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarWayPoint : MonoBehaviour
+public class WayPoint : MonoBehaviour
 {
-    public CarWayPoint secondWayPoint;
+    public WayPoint secondWayPoint;
     public int side;
+    private int x;
+    private int y;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +21,9 @@ public class CarWayPoint : MonoBehaviour
     {
 
     }
-    public (CarWayPoint, bool) getNextWaypoint(CarWayPoint last)
+    public (WayPoint, bool) getNextWaypoint(WayPoint last)
     {
-        List<CarWayPoint> c = transform.parent.GetComponent<Road>().GetConnectedWayPoints();
+        List<WayPoint> c = transform.parent.GetComponent<Road>().GetConnectedWayPoints();
         c.Remove(last);
         c.Remove(last.secondWayPoint);
 
@@ -51,4 +54,10 @@ public class CarWayPoint : MonoBehaviour
         }
 
     }
+
+    public List<WayPoint> getWaypointsAround()
+    {
+        return transform.parent.GetComponent<Road>().GetConnectedWayPoints();
+    }
+
 }

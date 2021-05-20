@@ -5,8 +5,8 @@ using UnityEngine;
 public class Car : MonoBehaviour
 {
     // Start is called before the first frame update
-    public CarWayPoint NextWaypoint;
-    public CarWayPoint LastWaypoint;
+    public WayPoint NextWaypoint;
+    public WayPoint LastWaypoint;
 
     public GameObject startWayPoint;
 
@@ -42,7 +42,7 @@ public class Car : MonoBehaviour
             if (transform.position == NextWaypoint.transform.position)
             {
 
-                CarWayPoint c = NextWaypoint;
+                WayPoint c = NextWaypoint;
                 var result = NextWaypoint.getNextWaypoint(LastWaypoint);
                 NextWaypoint = result.Item1;
                 if (result.Item2)

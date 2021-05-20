@@ -28,7 +28,7 @@ public class Spawner : MonoBehaviour
             {
                 if (s is Road)
                 {
-                    Car c = Instantiate(cars[rand.Next(0, cars.Length)]).GetComponent<Car>();
+                    Movable c = Instantiate(cars[rand.Next(0, cars.Length)]).GetComponent<Movable>();
                     c.NextWaypoint = ((Road)s).carWayPoint1;
                     c.LastWaypoint = ((Road)s).carWayPoint1;
                     c.transform.position = transform.position;

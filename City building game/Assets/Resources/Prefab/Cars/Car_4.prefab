@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7509192738772470187}
-  - component: {fileID: 5361521522680005286}
+  - component: {fileID: 2071195902419311660}
   m_Layer: 0
   m_Name: Car_4
   m_TagString: Untagged
@@ -36,7 +36,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5361521522680005286
+--- !u!114 &2071195902419311660
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,14 +45,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7503726562235915547}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42a360748565f8447bb8ec0b2f9b66c8, type: 3}
+  m_Script: {fileID: 11500000, guid: e89357bf3a077064c959f86643e2da07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   NextWaypoint: {fileID: 0}
   LastWaypoint: {fileID: 0}
-  startWayPoint: {fileID: 0}
-  speed: 5
-  rotationTime: 300
+  speed: 10
+  rotationTime: 200
+  linesize: 1
 --- !u!1 &7503824822549298735
 GameObject:
   m_ObjectHideFlags: 0

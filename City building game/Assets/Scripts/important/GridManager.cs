@@ -17,14 +17,14 @@ public class GridManager : MonoBehaviour
     public UnityEvent beforeBuild = new UnityEvent();
     public UnityEvent onBuild = new UnityEvent();
     public UnityEvent afterRoadConnections = new UnityEvent();
-
+    public GameObject gridPlane;
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            g = new Grid(width, height, gridsize, linePrefub, this.transform);
+            g = new Grid(width, height, gridsize, linePrefub, this.transform, gridPlane);
 
             DontDestroyOnLoad(gameObject);
 

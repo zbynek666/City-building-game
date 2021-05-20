@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5098560703888892401}
-  - component: {fileID: 2704783932711911989}
+  - component: {fileID: 7598633314583428544}
   m_Layer: 0
   m_Name: Bus_1
   m_TagString: Untagged
@@ -36,7 +36,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2704783932711911989
+--- !u!114 &7598633314583428544
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,14 +45,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5100392145169345501}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42a360748565f8447bb8ec0b2f9b66c8, type: 3}
+  m_Script: {fileID: 11500000, guid: e89357bf3a077064c959f86643e2da07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   NextWaypoint: {fileID: 0}
   LastWaypoint: {fileID: 0}
-  startWayPoint: {fileID: 0}
-  speed: 5
-  rotationTime: 300
+  speed: 10
+  rotationTime: 200
+  linesize: 1
 --- !u!1 &5100546570387912879
 GameObject:
   m_ObjectHideFlags: 0

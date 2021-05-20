@@ -9,8 +9,11 @@ public class Road : Structure
 
     public bool[] connections = new bool[3];
 
-    public CarWayPoint carWayPoint1;
-    public CarWayPoint carWayPoint2;
+    public WayPoint carWayPoint1;
+    public WayPoint carWayPoint2;
+
+    public WayPoint PeopleWayPoint1;
+    public WayPoint PeopleWayPoint2;
 
 
 
@@ -57,24 +60,35 @@ public class Road : Structure
 
     private void createCarWayPoint()
     {
-        GameObject g1 = new GameObject("WayPoint1");
+        //creation car waypoints
+        GameObject g1 = new GameObject("CarWayPoint1");
         g1.transform.parent = gameObject.transform;
-        g1.transform.localPosition = new Vector3(0, 0, -2);
-        carWayPoint1 = g1.AddComponent<CarWayPoint>();
+        g1.transform.localPosition = new Vector3(0, 0, 0);
+        carWayPoint1 = g1.AddComponent<WayPoint>();
         carWayPoint1.side = 1;
 
-        GameObject g2 = new GameObject("WayPoint2");
+
+
+        //creation waypoints for peoples 
+        /*
+        g1 = new GameObject("CarWayPoint1");
+        g1.transform.parent = gameObject.transform;
+        g1.transform.localPosition = new Vector3(0, 0, -2);
+        carWayPoint1 = g1.AddComponent<WayPoint>();
+        carWayPoint1.side = 1;
+
+        g2 = new GameObject("CarWayPoint2");
         g2.transform.parent = gameObject.transform;
         g2.transform.localPosition = new Vector3(0, 0, 2);
-        carWayPoint2 = g2.AddComponent<CarWayPoint>();
+        carWayPoint2 = g2.AddComponent<WayPoint>();
         carWayPoint2.side = 2;
 
-        carWayPoint2.secondWayPoint = carWayPoint1;
-        carWayPoint1.secondWayPoint = carWayPoint2;
-
-
+        PeopleWayPoint2.secondWayPoint = carWayPoint1;
+        PeopleWayPoint1.secondWayPoint = carWayPoint2;
+        */
 
     }
+
 
     private void check()
     {
@@ -276,10 +290,10 @@ public class Road : Structure
 
     }
 
-    public List<CarWayPoint> GetConnectedWayPoints()
+    public List<WayPoint> GetConnectedWayPoints()
     {
         Structure[] nei = getNeighbors();
-        List<CarWayPoint> wayPoints = new List<CarWayPoint>();
+        List<WayPoint> wayPoints = new List<WayPoint>();
         foreach (Structure s in nei)
         {
 
@@ -293,5 +307,7 @@ public class Road : Structure
 
         return wayPoints;
     }
+
+
 
 }

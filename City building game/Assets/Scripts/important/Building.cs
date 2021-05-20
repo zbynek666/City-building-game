@@ -4,11 +4,13 @@ using UnityEngine;
 
 public abstract class Building : Structure
 {
+
     // Start is called before the first frame update
     public bool requireRoad = false;
     public bool requireMainCon = false;
     public bool requirePower = false;
     public bool requireWater = false;
+
 
 
 
@@ -18,6 +20,7 @@ public abstract class Building : Structure
     protected bool hasMainCon;
     protected bool hasPower;
     protected bool hasWater;
+    protected bool hasPolice;
 
 
 
@@ -40,6 +43,11 @@ public abstract class Building : Structure
     protected virtual void clear()
     {
         active = false;
+        hasRoad = false;
+        hasMainCon = false;
+        hasPower = false;
+        hasWater = false;
+        hasPolice = false;
     }
 
     protected virtual void set()
@@ -90,11 +98,15 @@ public abstract class Building : Structure
     {
 
     }
-    private void OnActive()
+    protected void OnActive()
     {
 
     }
-    private void OnDeactive()
+    protected void OnDeactive()
+    {
+
+    }
+    public virtual void reciceRangeEffects()
     {
 
     }

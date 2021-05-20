@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class RangeBuilding : Building
 {
     public int range;
-    private List<Structure> StructuresInRange = new List<Structure>();
+    protected List<Structure> StructuresInRange = new List<Structure>();
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +33,14 @@ public abstract class RangeBuilding : Building
         StructuresInRange = GridManager.Instance.getInRange(this);
 
     }
+    protected override void onDay()
+    {
+        rangeEffect();
+    }
 
+    protected virtual void rangeEffect()
+    {
+
+    }
 
 }
