@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     private PopulationManager populationManager = new PopulationManager();
     private UIMandager uIMandager = UIMandager.Instance;
     private ResourcesManager resourcesManager = new ResourcesManager();
+    private EventManager eventManager = new EventManager();
 
     int currentFPS;
 

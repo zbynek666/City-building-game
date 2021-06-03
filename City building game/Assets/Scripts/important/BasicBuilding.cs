@@ -10,6 +10,8 @@ public abstract class BasicBuilding : Building
     public int happines = 100;
 
     public int level = 1;
+    public GameObject fire;
+
 
 
 
@@ -63,8 +65,11 @@ public abstract class BasicBuilding : Building
     }
     public bool[] info()
     {
+        EventHappened(Service.typeOfService.Fire);
+
         return new bool[] { hasRoad, hasMainCon, hasPower, hasWater, hasPolice, hasFire, hasHealtcare };
     }
+
 
 
 
@@ -75,6 +80,20 @@ public abstract class BasicBuilding : Building
     }
 
     // Update is called once per frame
+    public void EventHappened(Service.typeOfService serv)
+    {
+        if (serv == Service.typeOfService.Fire)
+        {
+            Instantiate(fire, gameObject.transform);
+            for (int i = 0; i < gameObject.GetComponent<Renderer>().materials.Length; i++)
+            {
+                Color c = gameObject.GetComponent<Renderer>().materials[i].color;
+                gameObject.GetComponent<Renderer>().materials[i].color = new Color(c.r - 0.4f, c.g - 0.4f, c.b - 0.4f);
+            }
+        }
+    }
+
+
 
 
 }

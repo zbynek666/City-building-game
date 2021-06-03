@@ -136,6 +136,8 @@ MonoBehaviour:
   maxPopulation: 4
   population: 4
   happines: 100
+  level: 1
+  fire: {fileID: 6910716432633704742, guid: 52c995e96e0efd24dbb1b75b2b7df3b2, type: 3}
 --- !u!114 &1805443897065756276
 MonoBehaviour:
   m_ObjectHideFlags: 0
