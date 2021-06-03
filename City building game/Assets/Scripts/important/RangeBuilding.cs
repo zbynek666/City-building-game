@@ -31,14 +31,16 @@ public abstract class RangeBuilding : Building
     {
         base.set();
         StructuresInRange = GridManager.Instance.getInRange(this);
+        setEffect();
+
 
     }
     protected override void onDay()
     {
-        rangeEffect();
     }
 
-    protected virtual void rangeEffect()
+
+    protected virtual void setEffect()
     {
 
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -36,6 +37,31 @@ public class UIMandager : MonoBehaviour
 
     public GameObject BuildingInfoPanel;
 
+    public Button DebugBtn;
+    public Button TestBtn;
+
+    public GameObject rangeEffectCilinder;
+
+    private GameObject rangeEffect;
+
+    public GameObject SidePanel;
+    public GameObject BottonBar;
+
+    public GameObject MapInfo;
+
+
+    public Animator BottonBarAnimator;
+    public Animator SidePanelAnimator;
+
+    public Button[] ChangeMapButtons;
+
+    public GameObject IncomeBar;
+
+    public TextMeshProUGUI ProductionLabel;
+    public TextMeshProUGUI ConsumationLabel;
+    public TextMeshProUGUI MapNameLabel;
+
+
 
 
 
@@ -55,10 +81,27 @@ public class UIMandager : MonoBehaviour
 
     void Start()
     {
+
+        DebugBtn.onClick.AddListener(GridManager.Instance.callEvents);
+        TestBtn.onClick.AddListener(test);
+
+        ChangeMapButtons[0].onClick.AddListener(delegate { MapManager.Instance.changeMap(MapManager.TypesOfMap.Original); });
+        ChangeMapButtons[1].onClick.AddListener(delegate { MapManager.Instance.changeMap(MapManager.TypesOfMap.Power); });
+        ChangeMapButtons[2].onClick.AddListener(delegate { MapManager.Instance.changeMap(MapManager.TypesOfMap.Water); });
+
+        ChangeMapButtons[0].onClick.AddListener(delegate { showMapInfo(MapManager.TypesOfMap.Original); });
+        ChangeMapButtons[1].onClick.AddListener(delegate { showMapInfo(MapManager.TypesOfMap.Power); });
+        ChangeMapButtons[2].onClick.AddListener(delegate { showMapInfo(MapManager.TypesOfMap.Water); });
+
+
+
+
         populationLabelText = populationLabel.GetComponent<TextMeshProUGUI>();
         moneyIncameLabelText = moneyIncameLabel.GetComponent<TextMeshProUGUI>();
         dateLabelText = dateLabel.GetComponent<TextMeshProUGUI>();
         moneyLabelText = moneyLabel.GetComponent<TextMeshProUGUI>();
+
+
 
         foreach (Transform child in categories.transform)
         {
@@ -82,6 +125,12 @@ public class UIMandager : MonoBehaviour
         }
     }
 
+    private void test()
+    {
+        BottonBarAnimator.SetBool("show", !BottonBarAnimator.GetBool("show"));
+        SidePanelAnimator.SetBool("show", !SidePanelAnimator.GetBool("show"));
+
+    }
 
     void Update()
     {
@@ -111,6 +160,19 @@ public class UIMandager : MonoBehaviour
         }
         moneyLabelText.text = GlobalVariables.money + "";
         updateZoneBars();
+        updateResourcesLabels();
+
+    }
+
+    private void updateResourcesLabels()
+    {
+        /*
+        Debug.Log(GameManager.Instance.getResources());
+        foreach (int i in GameManager.Instance.getResources())
+        {
+            Debug.Log(i);
+        }
+        */
     }
 
     private void changeCategori(GameObject categori)
@@ -133,11 +195,23 @@ public class UIMandager : MonoBehaviour
 
     }
 
+
     public void showBuildingInfo(Building bl)
     {
-        if (bl is BasicBuilding)
+        Destroy(rangeEffect);
+        if (bl is RangeBuilding)
         {
-            writeBasicBuildingInfo((BasicBuilding)bl);
+
+            rangeEffect = Instantiate(rangeEffectCilinder, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
+            rangeEffect.transform.position = bl.gameObject.transform.position;
+            rangeEffect.transform.localScale = new Vector3(((RangeBuilding)bl).range * 10, 1, ((RangeBuilding)bl).range * 10);
+            Debug.Log("range");
+
+        }
+        else if (bl is BasicBuilding)
+        {
+            BasicBuildingInfo((BasicBuilding)bl);
+
         }
         else
         {
@@ -148,15 +222,112 @@ public class UIMandager : MonoBehaviour
     public void hideBuildingInfo()
     {
         BuildingInfoPanel.SetActive(false);
+        Destroy(rangeEffect);
     }
-    private void writeBasicBuildingInfo(BasicBuilding bb)
+    private void BasicBuildingInfo(BasicBuilding bb)
     {
         bool[] info = bb.info();
         BuildingInfoPanel.transform.Find("info").GetComponent<TextMeshProUGUI>().text = "";
-        for (int i = 0; i < info.Length; i++)
-        {
-            BuildingInfoPanel.transform.Find("info").GetComponent<TextMeshProUGUI>().text += info[i] + " \u000a";
 
+        BuildingInfoPanel.transform.Find("info").GetComponent<TextMeshProUGUI>().text += "Road: " + info[0] + " \u000a";
+        BuildingInfoPanel.transform.Find("info").GetComponent<TextMeshProUGUI>().text += "Main connection: " + info[1] + " \u000a";
+        BuildingInfoPanel.transform.Find("info").GetComponent<TextMeshProUGUI>().text += "Power: " + info[2] + " \u000a";
+        BuildingInfoPanel.transform.Find("info").GetComponent<TextMeshProUGUI>().text += "Water: " + info[3] + " \u000a";
+        BuildingInfoPanel.transform.Find("info").GetComponent<TextMeshProUGUI>().text += "Police: " + info[4] + " \u000a";
+        BuildingInfoPanel.transform.Find("info").GetComponent<TextMeshProUGUI>().text += "Fire: " + info[5] + " \u000a";
+        BuildingInfoPanel.transform.Find("info").GetComponent<TextMeshProUGUI>().text += "Healthcare: " + info[6] + " \u000a";
+
+
+
+    }
+
+
+    public void showBottonBar(bool b)
+    {
+        if (b)
+        {
+        }
+        else
+        {
         }
     }
+    public void showSidePanel(bool b)
+    {
+        if (b)
+        {
+        }
+        else
+        {
+        }
+    }
+
+    public void showMapInfo(MapManager.TypesOfMap m)
+    {
+        if (m == MapManager.TypesOfMap.Original)
+        {
+            MapInfo.SetActive(false);
+
+
+        }
+        float prod = 0;
+        float cons = 0;
+
+        MapInfo.SetActive(true);
+        if (m == MapManager.TypesOfMap.Water)
+        {
+
+            prod = GameManager.Instance.getResources()[0];
+            cons = GameManager.Instance.getResources()[1] + 1f;
+
+            MapNameLabel.text = "Water";
+            ProductionLabel.text = "Production :" + prod + "MW/Day";
+            ConsumationLabel.text = "Consumation" + cons + "MW / Day";
+
+        }
+        if (m == MapManager.TypesOfMap.Power)
+        {
+
+
+            prod = GameManager.Instance.getResources()[2];
+            cons = GameManager.Instance.getResources()[3] + 1f;
+
+            ProductionLabel.text = "Production: " + prod + "m" + "\xB3" + "/Day";
+            ConsumationLabel.text = "Consumation: " + cons + "m" + "\xB3" + "/ Day";
+            MapNameLabel.text = "Power";
+
+        }
+
+
+        Debug.Log(GameManager.Instance.getResources()[0] + " , " + GameManager.Instance.getResources()[1]);
+        if (prod / cons > 2)
+        {
+            IncomeBar.transform.localPosition = new Vector3(200, 8, 0);
+
+        }
+        else if (prod / cons < 0)
+        {
+            IncomeBar.transform.localPosition = new Vector3(0, 8, 0);
+
+        }
+        else
+        {
+            IncomeBar.transform.localPosition = new Vector3(((prod / cons)) * 100, 8, 0);
+
+        }
+
+
+
+    }
+
+
+    public void closeMapInfo()
+    {
+        MapInfo.SetActive(false);
+
+        MapManager.Instance.changeMap(MapManager.TypesOfMap.Original);
+    }
+
+
+
+
 }

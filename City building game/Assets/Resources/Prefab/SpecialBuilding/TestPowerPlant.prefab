@@ -114,6 +114,13 @@ MonoBehaviour:
   y: 0
   isPlaceByDefault: 0
   requireRoad: 0
+  requireMainCon: 0
   requirePower: 0
+  requireWater: 0
+  PowerConsumption: 4
+  WaterConsumption: 4
+  GarbageDisposalConsumption: 4
+  SewageConsumption: 4
   active: 0
   SelectedType: 2
+  prodiction: 100

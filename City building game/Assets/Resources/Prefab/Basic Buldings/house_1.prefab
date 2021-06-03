@@ -128,9 +128,14 @@ MonoBehaviour:
   requireMainCon: 0
   requirePower: 1
   requireWater: 0
-  active: 0
-  maxPopulation: 0
-  population: 0
+  PowerConsumption: 10
+  WaterConsumption: 10
+  GarbageDisposalConsumption: 10
+  SewageConsumption: 10
+  active: 1
+  maxPopulation: 4
+  population: 4
+  happines: 100
 --- !u!114 &1805443897065756276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,11 +149,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cars:
-  - {fileID: 5100392145169345501, guid: bb121e744c4d3c548aed42f78f2adc17, type: 3}
-  - {fileID: 4222283932596273644, guid: 3414666985f50064499df44c887a566a, type: 3}
   - {fileID: 504588610014916936, guid: ac1b0f11e04caa144877949fd4f8da94, type: 3}
-  - {fileID: 2445195424271852224, guid: b1eac5012785097468a5b39218bada44, type: 3}
-  - {fileID: 6180236986232046261, guid: 406fcd054a8fbae4e96879d818f4b2bf, type: 3}
-  - {fileID: 7503726562235915547, guid: 401f5b5520a49234cb9faf1c73ca856b, type: 3}
-  - {fileID: 7476507711778866294, guid: ef5b26122d35ba1408dec36da9003bfe, type: 3}
-  - {fileID: 4708802474404643803, guid: 283a947370c704e488d7f053adb7d1d2, type: 3}

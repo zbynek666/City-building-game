@@ -58,8 +58,8 @@ public class GridManager : MonoBehaviour
                 g.gridArray[x, y] = ob;
             }
         }
-
         callEvents();
+
 
     }
     public Structure getOnPosition(Vector2 pos)
@@ -148,7 +148,7 @@ public class GridManager : MonoBehaviour
             {
 
 
-                if (g.AtPosition(i, j) != null && g.AtPosition(i, j).GetType() == typeof(T))
+                if (g.AtPosition(i, j) != null && g.AtPosition(i, j) is T)
                 {
                     bool isIn = false;
                     for (int k = 0; k < r.Count; k++)
@@ -237,6 +237,7 @@ public class GridManager : MonoBehaviour
                     int x = i - (rad / 2) + plusX;
                     int y = j - (rad / 2) + plusY;
                     Structure str = g.AtPosition(x, y);
+
                     if (str != null && str != rb)
                     {
 
@@ -255,6 +256,14 @@ public class GridManager : MonoBehaviour
 
                         }
                     }
+                    else
+                    {
+                        /*
+                        GameObject g = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        Vector2 v = getRealPosition(new Vector2(x, y));
+                        g.transform.position = new Vector3(v.x, 0, v.y);
+                        */
+                    }
 
                 }
             }
@@ -269,6 +278,11 @@ public class GridManager : MonoBehaviour
         onBuild.Invoke();
 
         afterRoadConnections.Invoke();
+    }
+
+    public void DestroyStructure(Structure str)
+    {
+        g.gridArray[str.x, str.y] = null;
     }
 
 

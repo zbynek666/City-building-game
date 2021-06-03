@@ -4,8 +4,14 @@ using UnityEngine;
 
 public abstract class BasicBuilding : Building
 {
-    public int maxPopulation;
-    public int population;
+    public int maxPopulation = 4;
+    public int population = 4;
+
+    public int happines = 100;
+
+    public int level = 1;
+
+
 
 
 
@@ -16,14 +22,56 @@ public abstract class BasicBuilding : Building
     {
         base.Start();
     }
+
+    protected void TryLevelUp()
+    {
+        if (happines == 100)
+        {
+            int[,] sracka = new int[,] { { 1, 1, 1, 0, 0, 1 }, { -1, 1, 0, 1, 0, -1 }, { 0, -1, -1, -1, -1, 0 }, { 0, 1, -1, 0, -1, 1 } };
+            for (int i = 0; i < 4; i++)
+            {
+                Structure s1 = GridManager.Instance.getOnPosition(new Vector2(x + sracka[i, 0], y + sracka[i, 1]));
+                Structure s2 = GridManager.Instance.getOnPosition(new Vector2(x + sracka[i, 2], y + sracka[i, 3]));
+                Structure s3 = GridManager.Instance.getOnPosition(new Vector2(x + sracka[i, 4], y + sracka[i, 5]));
+
+
+                if ((s1 == null || ((s1 is BasicBuilding && ((BasicBuilding)s1).happines == 100 && ((BasicBuilding)s1).level == level))) &&
+                    (s2 == null || ((s2 is BasicBuilding && ((BasicBuilding)s2).happines == 100 && ((BasicBuilding)s2).level == level))) &&
+                    (s3 == null || ((s3 is BasicBuilding && ((BasicBuilding)s3).happines == 100 && ((BasicBuilding)s3).level == level))))
+                {
+                    LevelUp(new Structure[] { s1, s2, s3 });
+                    break;
+                }
+            }
+
+
+        }
+
+    }
+    protected void LevelUp(Structure[] structures)
+    {
+        foreach (Structure s in structures)
+        {
+            if (s != null)
+            {
+                s.Destroy();
+
+            }
+        }
+        happines = 50;
+        level = level + 1;
+    }
     public bool[] info()
     {
-        return new bool[] { hasRoad, hasMainCon, hasPower, hasWater };
+        return new bool[] { hasRoad, hasMainCon, hasPower, hasWater, hasPolice, hasFire, hasHealtcare };
     }
 
-    public override void reciceRangeEffects()
-    {
 
+
+    protected override void onDay()
+    {
+        base.onDay();
+        TryLevelUp();
     }
 
     // Update is called once per frame

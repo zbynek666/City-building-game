@@ -112,7 +112,6 @@ public class Movable : MonoBehaviour
 
                 }
 
-                Debug.Log(line);
 
 
                 /*

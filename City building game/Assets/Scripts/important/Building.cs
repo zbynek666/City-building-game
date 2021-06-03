@@ -11,16 +11,24 @@ public abstract class Building : Structure
     public bool requirePower = false;
     public bool requireWater = false;
 
+    public int PowerConsumption = 4;
+    public int WaterConsumption = 4;
+    public int GarbageDisposalConsumption = 4;
+    public int SewageConsumption = 4;
 
 
 
-    public bool active;
+
+    public bool active = true;
 
     protected bool hasRoad;
     protected bool hasMainCon;
     protected bool hasPower;
     protected bool hasWater;
     protected bool hasPolice;
+    protected bool hasFire;
+    protected bool hasHealtcare;
+
 
 
 
@@ -33,6 +41,7 @@ public abstract class Building : Structure
         GridManager.Instance.afterRoadConnections.AddListener(set);
         GameManager.Instance.onDay.AddListener(onDay);
         GameManager.Instance.onMonths.AddListener(OnMonths);
+
         set();
 
     }
@@ -40,14 +49,20 @@ public abstract class Building : Structure
     // Update is called once per frame
 
 
+
     protected virtual void clear()
     {
-        active = false;
         hasRoad = false;
         hasMainCon = false;
         hasPower = false;
         hasWater = false;
+
         hasPolice = false;
+        hasFire = false;
+        hasHealtcare = false;
+
+        active = true;
+
     }
 
     protected virtual void set()
@@ -63,6 +78,11 @@ public abstract class Building : Structure
                     hasRoad = true;
                     break;
                 }
+                else
+                {
+                    active = false;
+
+                }
             }
         }
         if (requirePower)
@@ -75,19 +95,15 @@ public abstract class Building : Structure
                     hasPower = true;
                     break;
                 }
+                else
+                {
+                    active = false;
+
+                }
             }
         }
 
-        active = true;
 
-        if (active)
-        {
-            OnActive();
-        }
-        else
-        {
-            OnDeactive();
-        }
     }
 
     protected virtual void onDay()
@@ -106,8 +122,21 @@ public abstract class Building : Structure
     {
 
     }
-    public virtual void reciceRangeEffects()
-    {
 
+
+    public void setServicis(Service.typeOfService tos)
+    {
+        if (tos == Service.typeOfService.Police)
+        {
+            hasPolice = true;
+        }
+        if (tos == Service.typeOfService.Fire)
+        {
+            hasFire = true;
+        }
+        if (tos == Service.typeOfService.Healthcare)
+        {
+            hasHealtcare = true;
+        }
     }
 }

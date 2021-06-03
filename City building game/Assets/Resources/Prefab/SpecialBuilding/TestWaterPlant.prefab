@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1902567704410900919}
   - component: {fileID: 1902567704410900918}
   - component: {fileID: 1902567704410900917}
-  - component: {fileID: 1330379771197344212}
   - component: {fileID: -4563284494515080048}
   m_Layer: 2
   m_Name: TestWaterPlant
@@ -97,27 +96,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1330379771197344212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1902567704410900916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e03b75b618429e40b83aa49b2091a50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  width: 0
-  height: 0
-  x: 0
-  y: 0
-  isPlaceByDefault: 0
-  requireRoad: 0
-  requirePower: 0
-  active: 0
-  SelectedType: 2
 --- !u!114 &-4563284494515080048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +114,13 @@ MonoBehaviour:
   y: 0
   isPlaceByDefault: 0
   requireRoad: 0
+  requireMainCon: 0
   requirePower: 0
+  requireWater: 0
+  PowerConsumption: 4
+  WaterConsumption: 4
+  GarbageDisposalConsumption: 4
+  SewageConsumption: 4
   active: 0
   SelectedType: 3
+  prodiction: 100

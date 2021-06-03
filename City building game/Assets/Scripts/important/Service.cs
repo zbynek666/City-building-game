@@ -10,6 +10,7 @@ public class Service : RangeBuilding
     // Start is called before the first frame update
     void Start()
     {
+        base.Start();
 
     }
 
@@ -19,13 +20,18 @@ public class Service : RangeBuilding
 
     }
 
-    protected override void rangeEffect()
+
+
+    protected override void setEffect()
     {
+        Debug.Log(StructuresInRange.Count);
         foreach (Structure s in StructuresInRange)
         {
-            if (s.GetType() == typeof(BasicBuilding))
+            Debug.Log(s);
+            if (s is Building)
             {
-                ((BasicBuilding)s).reciceRangeEffects();
+
+                ((Building)s).setServicis(serviceType);
             }
         }
     }

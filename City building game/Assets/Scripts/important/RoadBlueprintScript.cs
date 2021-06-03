@@ -25,6 +25,8 @@ public class RoadBlueprintScript : MonoBehaviour
         start = new Vector2(-1, -1);
         bluePrints = new List<GameObject>();
 
+
+
     }
 
     // Update is called once per frame

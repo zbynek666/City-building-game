@@ -8,6 +8,7 @@ public abstract class NeedsProvidingBuilding : Building
     int connectionSlot = -1;
     public enum typeOfConnection { conn, mainBuilding, power, water }
     public typeOfConnection SelectedType;
+    public int prodiction;
 
     protected void Start()
     {

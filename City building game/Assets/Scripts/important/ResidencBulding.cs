@@ -31,11 +31,12 @@ public class ResidencBulding : BasicBuilding
 
     protected override void onDay()
     {
-
+        base.onDay();
     }
 
     protected override void OnMonths()
     {
+        base.OnMonths();
     }
 
 

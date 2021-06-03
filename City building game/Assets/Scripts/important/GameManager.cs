@@ -21,8 +21,9 @@ public class GameManager : MonoBehaviour
 
     private PopulationManager populationManager = new PopulationManager();
     private UIMandager uIMandager = UIMandager.Instance;
+    private ResourcesManager resourcesManager = new ResourcesManager();
 
-
+    int currentFPS;
 
     private void Awake()
     {
@@ -37,6 +38,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        currentFPS = (int)(1f / Time.unscaledDeltaTime);
+        //Debug.Log(currentFPS);
+    }
     void Start()
     {
         populationManager.UpdatePopulation();
@@ -65,7 +71,11 @@ public class GameManager : MonoBehaviour
         }
         GlobalVariables.day++;
         populationManager.UpdatePopulation();
+        resourcesManager.updateResources();
         UIMandager.Instance.updateLabels();
+
+
+
 
     }
 
@@ -86,6 +96,17 @@ public class GameManager : MonoBehaviour
     {
 
         return new Vector3(populationManager.residentDemand, populationManager.commercialDemand, populationManager.industrialDemand);
+    }
+
+    public int[] getResources()
+    {
+        return new int[] {
+            resourcesManager.WaterProduction,resourcesManager.WaterConsumption,
+            resourcesManager.PowerProduction,resourcesManager.PowerConsumption,
+            resourcesManager.GarbageDisposalProduction,resourcesManager.GarbageDisposalConsumption,
+            resourcesManager.SewageProduction,resourcesManager.SewageConsumption
+
+        };
     }
 
 }

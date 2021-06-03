@@ -8,8 +8,10 @@ public class BuldingButtonsManager : MonoBehaviour
     // Start is called before the first frame update
     public GameObject blueprint;
     public GameObject p;
+
     [SerializeField]
     public enum typeOfStructure { road, bulding, zone }
+
 
     public typeOfStructure str;
     void Start()

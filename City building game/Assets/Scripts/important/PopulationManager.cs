@@ -5,9 +5,9 @@ using UnityEngine;
 public class PopulationManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float residentDemand = 0;
-    public float commercialDemand = 0;
-    public float industrialDemand = 0;
+    public float residentDemand { get; private set; }
+    public float commercialDemand { get; private set; }
+    public float industrialDemand { get; private set; }
 
 
 

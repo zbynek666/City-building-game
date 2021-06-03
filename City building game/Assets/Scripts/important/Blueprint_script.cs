@@ -13,12 +13,31 @@ public class Blueprint_script : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(prefab.GetComponent<Building>());
+
+        if (prefab.GetComponent<Building>() is RangeBuilding)
+        {
+            GameObject rangeEffectCilinder = UIMandager.Instance.rangeEffectCilinder;
+            GameObject rangeEffect = Instantiate(rangeEffectCilinder, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
+            rangeEffect.transform.position = gameObject.transform.position;
+            rangeEffect.transform.localScale = new Vector3(prefab.GetComponent<RangeBuilding>().range * 10, 1, prefab.GetComponent<RangeBuilding>().range * 10);
+            rangeEffect.transform.parent = transform;
+        }
+
+
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+
+
+
 
         if (Physics.Raycast(ray, out hit, 5000.0f, 1 << LayerMask.NameToLayer("Ground")))
         {
             transform.position = hit.point;
         }
+
+
     }
 
     // Update is called once per frame

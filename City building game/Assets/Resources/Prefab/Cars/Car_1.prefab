@@ -134,6 +134,7 @@ MonoBehaviour:
   speed: 10
   rotationTime: 200
   linesize: 1
+  canJump: 0
 --- !u!1 &504806142580981874
 GameObject:
   m_ObjectHideFlags: 0

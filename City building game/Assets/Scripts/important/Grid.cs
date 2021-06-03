@@ -73,7 +73,7 @@ public class Grid
         int GridSize = width;
 
         /*
-        float thick = 0.02f;
+        float thicc = 0.02f;
 
         for (int i = 0; i < width + 2; i++)
         {
@@ -126,7 +126,7 @@ public class Grid
 
     public Structure AtPosition(int x, int y)
     {
-        if (x < 0 || x > width || y < 0 || y > width)
+        if (x < 0 || x >= width || y < 0 || y >= width)
         {
             return null;
         }

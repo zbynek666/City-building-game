@@ -12,6 +12,8 @@ public class Structure : MonoBehaviour
 
     public bool isPlaceByDefault;
 
+    private List<Color> originalColors = new List<Color>();
+
 
     public virtual void Start()
     {
@@ -27,9 +29,52 @@ public class Structure : MonoBehaviour
 
         }
 
+        foreach (Material m in gameObject.GetComponent<Renderer>().materials)
+        {
+            originalColors.Add(m.color);
+        }
+        MapManager.Instance.changeColor.AddListener(changeColor);
+
 
     }
 
+    protected void changeColor(MapManager.TypesOfMap t)
+    {
+        foreach (Material m in gameObject.GetComponent<Renderer>().materials)
+        {
+            m.color = new Color(0.8f, 0.8f, 0.8f);
+        }
+        if (t == MapManager.TypesOfMap.Original)
+        {
+
+            for (int i = 0; i < originalColors.Count; i++)
+            {
+                gameObject.GetComponent<Renderer>().materials[i].color = originalColors[i];
+            }
+
+
+        }
+        else if (t == MapManager.TypesOfMap.Power && this is Power)
+        {
+            foreach (Material m in gameObject.GetComponent<Renderer>().materials)
+            {
+                m.color = new Color(0, 0.8f, 0);
+
+            }
+
+
+        }
+        else if (t == MapManager.TypesOfMap.Water && this is Water)
+        {
+            foreach (Material m in gameObject.GetComponent<Renderer>().materials)
+            {
+                m.color = new Color(0, 0.8f, 0);
+
+            }
+
+
+        }
+    }
 
 
     protected void changeIcon(Sprite s)
@@ -63,6 +108,12 @@ public class Structure : MonoBehaviour
 
 
         return s;
+    }
+
+    public void Destroy()
+    {
+        GridManager.Instance.DestroyStructure(this);
+        Destroy(gameObject);
     }
 
 }
