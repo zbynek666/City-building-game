@@ -572,7 +572,7 @@ GameObject:
   - component: {fileID: 808159818798941242}
   - component: {fileID: 6648524805908650224}
   m_Layer: 0
-  m_Name: Male 4 1
+  m_Name: Male 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -636,8 +636,9 @@ MonoBehaviour:
   LastWaypoint: {fileID: 0}
   speed: 1
   rotationTime: 200
-  linesize: 2
-  canJump: 1
+  line: {x: 0, y: 0, z: 0}
+  linesize: 4
+  canJump: 0
 --- !u!1 &808159818808309328
 GameObject:
   m_ObjectHideFlags: 0

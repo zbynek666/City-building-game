@@ -12,7 +12,7 @@ public class Structure : MonoBehaviour
 
     public bool isPlaceByDefault;
 
-    private List<Color> originalColors = new List<Color>();
+    protected List<Color> originalColors = new List<Color>();
 
 
     public virtual void Start()
@@ -28,17 +28,22 @@ public class Structure : MonoBehaviour
             GridManager.Instance.addToPosition(x, y, this);
 
         }
-
-        foreach (Material m in gameObject.GetComponent<Renderer>().materials)
+        if (gameObject.GetComponent<Renderer>() != null)
         {
-            originalColors.Add(m.color);
+            foreach (Material m in gameObject.GetComponent<Renderer>().materials)
+            {
+                originalColors.Add(m.color);
+            }
         }
+
         MapManager.Instance.changeColor.AddListener(changeColor);
+
+
 
 
     }
 
-    protected void changeColor(MapManager.TypesOfMap t)
+    protected virtual void changeColor(MapManager.TypesOfMap t)
     {
         foreach (Material m in gameObject.GetComponent<Renderer>().materials)
         {
@@ -47,8 +52,10 @@ public class Structure : MonoBehaviour
         if (t == MapManager.TypesOfMap.Original)
         {
 
-            for (int i = 0; i < originalColors.Count; i++)
+            for (int i = 0; i < gameObject.GetComponent<Renderer>().materials.Length; i++)
             {
+                Debug.Log(gameObject.GetComponent<Renderer>().materials.Length + "/" + originalColors.Count + "/" + i);
+
                 gameObject.GetComponent<Renderer>().materials[i].color = originalColors[i];
             }
 
@@ -82,10 +89,10 @@ public class Structure : MonoBehaviour
         if (icon == null)
         {
             GameObject objToSpawn = new GameObject("Icon");
+            objToSpawn.transform.localScale = new Vector3(5, 5, 5);
 
             objToSpawn.transform.parent = this.gameObject.transform;
             objToSpawn.transform.localPosition = new Vector3(0, 5, 0);
-            objToSpawn.transform.localScale = new Vector3(5, 5, 5);
 
             objToSpawn.AddComponent<Billbord>();
             objToSpawn.AddComponent<SpriteRenderer>();

@@ -102,12 +102,15 @@ MonoBehaviour:
   x: 0
   y: 0
   isPlaceByDefault: 0
-  curvys:
-  - {fileID: 4579454407841743219, guid: fd38513a9b1a0994ca2688377b64245d, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  roads:
+  - {fileID: 3859511865708305141, guid: 03e75175baadbcd45b2507b0c15dc3f7, type: 3}
+  - {fileID: 1582246511312733684, guid: 3acdc67030b664045933a78591861033, type: 3}
+  - {fileID: 5439209861234321079, guid: c258d6253916aa84eb9410d32ab1dba7, type: 3}
   connections: 000000
+  carWayPoint1: {fileID: 0}
+  carWayPoint2: {fileID: 0}
+  PeopleWayPoint1: {fileID: 0}
+  PeopleWayPoint2: {fileID: 0}
 --- !u!114 &6000003057337258841
 MonoBehaviour:
   m_ObjectHideFlags: 0

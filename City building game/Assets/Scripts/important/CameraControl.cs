@@ -30,6 +30,8 @@ public class CameraControl : MonoBehaviour
         newPosition = transform.position;
         newRotation = transform.rotation;
         newZoom = cameraTransform.localPosition;
+
+
     }
 
     void Update()

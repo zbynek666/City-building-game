@@ -9,6 +9,7 @@ public abstract class NeedsProvidingBuilding : Building
     public enum typeOfConnection { conn, mainBuilding, power, water }
     public typeOfConnection SelectedType;
     public int prodiction;
+    public int expense;
 
     protected void Start()
     {
@@ -67,7 +68,6 @@ public abstract class NeedsProvidingBuilding : Building
                 ((Road)s).connect(con);
             }
         }
-        Debug.Log("connect to road " + connectionSlot);
 
     }
 }

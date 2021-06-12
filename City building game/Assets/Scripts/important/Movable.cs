@@ -12,7 +12,7 @@ public class Movable : MonoBehaviour
     public float speed = 20;
     private float actualSpeed;
     public float rotationTime = 300;
-    private Vector3 line = new Vector3(0, 0, 0);
+    public Vector3 line = new Vector3(0, 0, 0);
     public int linesize;
     private bool jump = false;
     public bool canJump = false;
@@ -32,7 +32,6 @@ public class Movable : MonoBehaviour
 
 
             // car rotation
-            transform.position = Vector3.MoveTowards(transform.position, NextWaypoint.transform.position + line, speed * Time.deltaTime);
 
             Vector3 targetPoint = NextWaypoint.transform.position + line;
 
@@ -67,6 +66,8 @@ public class Movable : MonoBehaviour
                 line = new Vector3(0, 0, linesize);
 
             }
+            transform.position = Vector3.MoveTowards(transform.position, NextWaypoint.transform.position + line, speed * Time.deltaTime);
+
 
 
             //setting current line 

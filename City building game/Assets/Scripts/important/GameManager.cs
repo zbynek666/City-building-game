@@ -20,9 +20,10 @@ public class GameManager : MonoBehaviour
 
 
     private PopulationManager populationManager = new PopulationManager();
-    private UIMandager uIMandager = UIMandager.Instance;
     private ResourcesManager resourcesManager = new ResourcesManager();
+    private IncomeManager incomeManager = new IncomeManager();
     private EventManager eventManager = new EventManager();
+
 
     int currentFPS;
 
@@ -71,8 +72,14 @@ public class GameManager : MonoBehaviour
             GlobalVariables.day = 0;
         }
         GlobalVariables.day++;
-        populationManager.UpdatePopulation();
+
+        GlobalVariables.money += incomeManager.getIncome();
+        GlobalVariables.moneyIncome = incomeManager.getIncome();
+
         resourcesManager.updateResources();
+        populationManager.addPopulation();
+        populationManager.UpdatePopulation();
+
         UIMandager.Instance.updateLabels();
 
 
@@ -88,10 +95,7 @@ public class GameManager : MonoBehaviour
 
 
 
-    private int calculateIncome()
-    {
-        return 300;
-    }
+
 
     public Vector3 getZoneDemand()
     {
@@ -108,6 +112,17 @@ public class GameManager : MonoBehaviour
             resourcesManager.SewageProduction,resourcesManager.SewageConsumption
 
         };
+    }
+
+    public float[] getTaxes()
+    {
+        return new float[] { incomeManager.ResidanceTax, incomeManager.ComercialTax, incomeManager.IndustrialTax };
+    }
+    public void setTaxes(float r, float c, float i)
+    {
+        incomeManager.ResidanceTax = r;
+        incomeManager.ComercialTax = c;
+        incomeManager.IndustrialTax = i;
     }
 
 }

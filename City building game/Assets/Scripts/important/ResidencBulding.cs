@@ -8,7 +8,7 @@ public class ResidencBulding : BasicBuilding
     {
         base.Start();
 
-        population = maxPopulation;
+
     }
 
 
@@ -39,5 +39,40 @@ public class ResidencBulding : BasicBuilding
         base.OnMonths();
     }
 
+    public override void calculateHappines()
+    {
+        happines = HappinesBybuilding;
+        happines += globalHappins;
 
+        foreach (Structure s in getNeighbors())
+        {
+            if (s is ResidencBulding)
+            {
+                happines += 5;
+                if (((ResidencBulding)s).happines > 50)
+                {
+                    happines += 5;
+
+                    if (((ResidencBulding)s).happines > 100)
+                    {
+                        happines += 5;
+
+                    }
+                }
+
+            }
+        }
+        happines += happisesByTaxes;
+
+        if (happines > 100)
+        {
+            happines = 100;
+        }
+        else if (happines < 0)
+        {
+            happines = 0;
+        }
+
+
+    }
 }

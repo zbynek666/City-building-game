@@ -26,11 +26,12 @@ public class ComercialBuilding : BasicBuilding
 
     protected override void onDay()
     {
-
+        base.onDay();
     }
 
     protected override void OnMonths()
     {
+        base.onDay();
     }
     protected override void clear()
     {
@@ -41,5 +42,10 @@ public class ComercialBuilding : BasicBuilding
     {
         base.set();
 
+    }
+
+    public override void calculateHappines()
+    {
+        throw new System.NotImplementedException();
     }
 }

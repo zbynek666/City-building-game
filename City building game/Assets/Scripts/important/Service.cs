@@ -7,6 +7,7 @@ public class Service : RangeBuilding
 
     public enum typeOfService { Police, Fire, Healthcare };
     public typeOfService serviceType;
+    public int expense;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,17 +23,16 @@ public class Service : RangeBuilding
 
 
 
-    protected override void setEffect()
+    protected override void setEffect(Structure s)
     {
-        Debug.Log(StructuresInRange.Count);
-        foreach (Structure s in StructuresInRange)
-        {
-            Debug.Log(s);
-            if (s is Building)
-            {
 
-                ((Building)s).setServicis(serviceType);
-            }
+        Debug.Log(s);
+        if (s is Building)
+        {
+
+            ((Building)s).setServicis(serviceType);
         }
     }
+
+
 }

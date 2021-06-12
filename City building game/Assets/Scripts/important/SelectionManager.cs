@@ -32,6 +32,7 @@ public class SelectionManager : MonoBehaviour
             {
                 UIMandager.Instance.showBuildingInfo(selection.gameObject.GetComponent<Building>());
 
+
             }
 
         }

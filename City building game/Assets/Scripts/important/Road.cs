@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class Road : Structure
 {
-    public Mesh[] curvys = new Mesh[3];
+    protected Mesh[] curvys = new Mesh[5];
+
+    public GameObject[] roads = new GameObject[5];
+
 
     public bool[] connections = new bool[3];
 
@@ -14,6 +17,8 @@ public class Road : Structure
 
     public WayPoint PeopleWayPoint1;
     public WayPoint PeopleWayPoint2;
+
+    bool isAfterStart = false;
 
 
 
@@ -41,6 +46,12 @@ public class Road : Structure
     void Start()
     {
         base.Start();
+        foreach (GameObject r in roads)
+        {
+            curvys[Array.IndexOf(roads, r)] = r.GetComponent<MeshFilter>().sharedMesh;
+        }
+        //GetComponent<MeshFilter>().mesh = curvys[3];
+
 
 
 
@@ -51,11 +62,14 @@ public class Road : Structure
         //curvys[0] = gameObject.GetComponent<MeshFilter>().mesh;
         //GameObject g = Instantiate(new emp, transform.position, transform.rotation);
 
+        if (!isPlaceByDefault)
+        {
+            checkCurvy();
 
-        checkCurvy();
+        }
 
         createCarWayPoint();
-
+        isAfterStart = true;
     }
 
     private void createCarWayPoint()
@@ -92,30 +106,33 @@ public class Road : Structure
 
     private void check()
     {
-        checkCurvy();
 
-
-        if (isPlaceByDefault)
+        if (isAfterStart)
         {
-            connections[0] = true;
+            checkCurvy();
 
-            foreach (Structure s in getNeighbors())
+            if (isPlaceByDefault)
             {
+                connections[0] = true;
 
-                if (s != null && s.GetType() == typeof(Road))
+                foreach (Structure s in getNeighbors())
                 {
-                    Road r = (Road)s;
-                    bool same = true;
-                    for (int i = 0; i < connections.Length; i++)
+
+                    if (s != null && s.GetType() == typeof(Road))
                     {
-                        if (connections[i] == true && r.connections[i] == false)
+                        Road r = (Road)s;
+                        bool same = true;
+                        for (int i = 0; i < connections.Length; i++)
                         {
-                            same = false;
+                            if (connections[i] == true && r.connections[i] == false)
+                            {
+                                same = false;
+                            }
                         }
-                    }
-                    if (!same)
-                    {
-                        r.connect(connections);
+                        if (!same)
+                        {
+                            r.connect(connections);
+                        }
                     }
                 }
             }
@@ -154,86 +171,119 @@ public class Road : Structure
 
             }
         }
-        if (neighbor < 3)
+        GetComponent<MeshRenderer>().materials = roads[1].GetComponent<MeshRenderer>().sharedMaterials;
+
+        if (neighbor == 1)
+        {
+            if (neighbors[0])
+            {
+                gameObject.GetComponent<MeshFilter>().mesh = curvys[4];
+                gameObject.transform.rotation = Quaternion.Euler(0, 270, 0);
+
+
+            }
+            if (neighbors[1])
+            {
+                gameObject.GetComponent<MeshFilter>().mesh = curvys[4];
+                gameObject.transform.rotation = Quaternion.Euler(0, 90, 0);
+
+
+            }
+            if (neighbors[2])
+            {
+                gameObject.GetComponent<MeshFilter>().mesh = curvys[4];
+                gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+
+            }
+            if (neighbors[3])
+            {
+                gameObject.GetComponent<MeshFilter>().mesh = curvys[4];
+                gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+
+
+            }
+        }
+        else if (neighbor == 2)
         {
 
 
-            if (neighbors[0] && neighbors[2])
-            {
-                gameObject.GetComponent<MeshFilter>().mesh = curvys[1];
-                gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-
-            }
-            if (neighbors[0] && neighbors[3])
-            {
-                gameObject.GetComponent<MeshFilter>().mesh = curvys[1];
-                gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-
-            }
             if (neighbors[0] && neighbors[1])
             {
                 gameObject.GetComponent<MeshFilter>().mesh = curvys[0];
-                gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-
+                gameObject.transform.rotation = Quaternion.Euler(0, 90, 0);
             }
-
-            if (neighbors[1] && neighbors[2])
-            {
-                gameObject.GetComponent<MeshFilter>().mesh = curvys[1];
-                gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-
-            }
-            if (neighbors[1] && neighbors[3])
-            {
-                gameObject.GetComponent<MeshFilter>().mesh = curvys[1];
-                gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-
-            }
-            if (neighbors[2] && neighbors[3])
+            else if (neighbors[2] && neighbors[3])
             {
                 gameObject.GetComponent<MeshFilter>().mesh = curvys[0];
-                gameObject.transform.rotation = Quaternion.Euler(0, 90, 0);
-
+                gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
             }
+
+            else if (neighbors[0] && neighbors[2])
+            {
+                gameObject.GetComponent<MeshFilter>().mesh = curvys[1];
+                gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            else if (neighbors[0] && neighbors[3])
+            {
+                gameObject.GetComponent<MeshFilter>().mesh = curvys[1];
+                gameObject.transform.rotation = Quaternion.Euler(0, 90, 0);
+            }
+            else if (neighbors[1] && neighbors[2])
+            {
+                gameObject.GetComponent<MeshFilter>().mesh = curvys[1];
+                gameObject.transform.rotation = Quaternion.Euler(0, 270, 0);
+            }
+            else if (neighbors[1] && neighbors[3])
+            {
+                gameObject.GetComponent<MeshFilter>().mesh = curvys[1];
+                gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+
+
 
 
         }
         else if (neighbor == 3)
         {
+            GetComponent<MeshRenderer>().materials = roads[2].GetComponent<MeshRenderer>().sharedMaterials;
 
             if (neighbors[0] && neighbors[1] && neighbors[2])
             {
                 gameObject.GetComponent<MeshFilter>().mesh = curvys[2];
-                gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                gameObject.transform.rotation = Quaternion.Euler(0, 270, 0);
 
 
             }
             if (neighbors[0] && neighbors[1] && neighbors[3])
             {
                 gameObject.GetComponent<MeshFilter>().mesh = curvys[2];
-                gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                gameObject.transform.rotation = Quaternion.Euler(0, 90, 0);
 
 
             }
             if (neighbors[0] && neighbors[3] && neighbors[2])
             {
                 gameObject.GetComponent<MeshFilter>().mesh = curvys[2];
-                gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);//
 
 
             }
             if (neighbors[3] && neighbors[1] && neighbors[2])
             {
                 gameObject.GetComponent<MeshFilter>().mesh = curvys[2];
-                gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);//
 
 
             }
+
 
         }
         else
         {
             gameObject.GetComponent<MeshFilter>().mesh = curvys[3];
+            GetComponent<MeshRenderer>().materials = roads[3].GetComponent<MeshRenderer>().sharedMaterials;
+
 
         }
 
@@ -268,9 +318,6 @@ public class Road : Structure
                 }
             }
         }
-        Debug.Log("road connect" + conns[2]);
-
-
     }
     public void disconnect()
     {

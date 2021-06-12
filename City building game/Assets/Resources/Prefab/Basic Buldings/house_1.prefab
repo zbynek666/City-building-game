@@ -134,10 +134,38 @@ MonoBehaviour:
   SewageConsumption: 10
   active: 1
   maxPopulation: 4
-  population: 4
-  happines: 100
+  population: 1
+  happines: 50
   level: 1
   fire: {fileID: 6910716432633704742, guid: 52c995e96e0efd24dbb1b75b2b7df3b2, type: 3}
+  policeCar: {fileID: 3545668581038571064, guid: aa10e8670be862545a903e1ced73da71,
+    type: 3}
+  Ambulance: {fileID: 730439770672000505, guid: 2c33dd3d9798ca14489cf28682338f07,
+    type: 3}
+  level1Meshs:
+  - {fileID: 2232599860558634972}
+  - {fileID: 4701121645836055099, guid: 32d2720fd6b57974ab20414fae554246, type: 3}
+  - {fileID: 6610659992903730970, guid: 5e08a302a93cc5e4db058f8137aeee68, type: 3}
+  - {fileID: 4684311638714235755, guid: dfe3f7212e07f724fbaf536b560dcd8e, type: 3}
+  - {fileID: 7526914819164471896, guid: b7a2ee4f0fad4e44290268d46698930e, type: 3}
+  - {fileID: 6915627464689428090, guid: 68cc2a6c47680614a99dc8912b7ae8e6, type: 3}
+  - {fileID: 3428843118276449796, guid: 805acee343f6c6a4ab62d21cef4a6584, type: 3}
+  - {fileID: 3305805167709397012, guid: fe0eae56abf5c024e9dfb594b8047772, type: 3}
+  level2Meshs:
+  - {fileID: 2506937628747078193, guid: a7c45a0c610ddba478ddbf4dd427d10f, type: 3}
+  - {fileID: 6557049283787895449, guid: 41f57789521bc0b4585209b55c6e1f66, type: 3}
+  - {fileID: 6682753134128990009, guid: 813cee7419e8e824bb2aa5b1acc6abeb, type: 3}
+  - {fileID: 7884508827839013676, guid: 00bcde865c9d0474a99c4e75bc8eb164, type: 3}
+  - {fileID: 5121256640843668545, guid: 18fd1055626f8fc429b0fa46fc93a32a, type: 3}
+  - {fileID: 4094425895523719033, guid: ee4dfba02157fc74882abcf4486ab6fb, type: 3}
+  - {fileID: 8291977004121311593, guid: 53438203ab94dba48a377dad71ea91bf, type: 3}
+  - {fileID: 6986983010452495392, guid: 16b96d60b41f5294b967d1b489fc03af, type: 3}
+  - {fileID: 6986983010452495392, guid: 16b96d60b41f5294b967d1b489fc03af, type: 3}
+  - {fileID: 2241818627774336188, guid: 27097a12018a20549988bc9abffb9a88, type: 3}
+  - {fileID: 3287668100635084788, guid: ed6a67a37bd5e494994bc4e0af0353c8, type: 3}
+  - {fileID: 191975430212966687, guid: 3e295d2bd21c011419d16a1e2c823d73, type: 3}
+  - {fileID: 284442418944529053, guid: 66e207d0646c96549abe638cd133964c, type: 3}
+  level3Meshs: []
 --- !u!114 &1805443897065756276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,4 +179,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cars:
-  - {fileID: 504588610014916936, guid: ac1b0f11e04caa144877949fd4f8da94, type: 3}
+  - {fileID: 4430982211668307118, guid: 58aab8f1271ea714d86259b822c73fff, type: 3}
+  - {fileID: 3021600685031276712, guid: 88d3bd738d8911847bc0fd0c9e31724b, type: 3}
+  - {fileID: 1258389371924268106, guid: b32fa1cbd886e814dab2d5ca2327a464, type: 3}
+  - {fileID: 7992987692673416684, guid: 8aad3332d5ac1764297b537ee38f50ec, type: 3}
+  - {fileID: 3448711693643340651, guid: d1ddd1739bb2426499d6829bc603d7be, type: 3}
+  - {fileID: 794632754533470487, guid: b9a8df1cdcd099442a11077bd8d3f205, type: 3}
+  - {fileID: 8628098672660487551, guid: 6e5afdd85de21db4ca2b09a7d6fcd997, type: 3}
+  - {fileID: 808159818808309326, guid: 5ad86aaa7f02f2945bb2e048db3b9e7f, type: 3}
+  firstWayPoint: {fileID: 0}
+  secondWayPoint: {fileID: 0}
+  DestroyAfterSpawn: 1
+  toNextRoad: 1
+  time: 2
+  spawnOnDay: 0

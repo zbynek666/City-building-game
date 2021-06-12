@@ -95,7 +95,6 @@ public class ResourcesManager : MonoBehaviour
 
         }
 
-        Debug.Log(WaterProduction);
     }
 
 

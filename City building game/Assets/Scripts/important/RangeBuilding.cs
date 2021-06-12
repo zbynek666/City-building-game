@@ -6,6 +6,8 @@ public abstract class RangeBuilding : Building
 {
     public int range;
     protected List<Structure> StructuresInRange = new List<Structure>();
+    public int expense;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,18 +33,25 @@ public abstract class RangeBuilding : Building
     {
         base.set();
         StructuresInRange = GridManager.Instance.getInRange(this);
-        setEffect();
+
+
 
 
     }
     protected override void onDay()
     {
+        if (StructuresInRange.Count > 0)
+        {
+            foreach (Structure s in StructuresInRange)
+            {
+                setEffect(s);
+
+            }
+        }
     }
 
 
-    protected virtual void setEffect()
-    {
+    protected abstract void setEffect(Structure s);
 
-    }
 
 }

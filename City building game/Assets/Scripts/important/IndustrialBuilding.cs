@@ -34,11 +34,16 @@ public class IndustrialBuilding : BasicBuilding
 
     protected override void onDay()
     {
+        base.onDay();
     }
 
     protected override void OnMonths()
     {
+        base.onDay();
     }
 
-
+    public override void calculateHappines()
+    {
+        throw new System.NotImplementedException();
+    }
 }

@@ -117,8 +117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e02f839b67dfa5a458425bbe118c4feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 0
-  height: 0
+  width: 1
+  height: 1
   x: 0
   y: 0
   isPlaceByDefault: 0
@@ -126,6 +126,26 @@ MonoBehaviour:
   requireMainCon: 0
   requirePower: 1
   requireWater: 0
+  PowerConsumption: 4
+  WaterConsumption: 4
+  GarbageDisposalConsumption: 4
+  SewageConsumption: 4
   active: 0
   maxPopulation: 0
   population: 0
+  happines: 100
+  level: 1
+  fire: {fileID: 6910716432633704742, guid: 52c995e96e0efd24dbb1b75b2b7df3b2, type: 3}
+  policeCar: {fileID: 3545668581038571064, guid: aa10e8670be862545a903e1ced73da71,
+    type: 3}
+  Ambulance: {fileID: 730439770672000505, guid: 2c33dd3d9798ca14489cf28682338f07,
+    type: 3}
+  level1Meshs:
+  - {fileID: 4681788876286269319}
+  - {fileID: 6371207930081388482, guid: 991e6bb092c808649a983d44f203ac44, type: 3}
+  - {fileID: 1460943166866966587, guid: 6ae0a3c457aa3b44089461b0dc78613c, type: 3}
+  level2Meshs:
+  - {fileID: 1148722132415511334, guid: eee1882584ee0c64c864ea25a3c0f892, type: 3}
+  - {fileID: 3378829607089599770, guid: 9c5210eebe985ea449fb5573178d4412, type: 3}
+  - {fileID: 6393285661037053033, guid: 44503e46b0abefa4cb7aa9fcb9fc4a01, type: 3}
+  level3Meshs: []

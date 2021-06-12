@@ -13,7 +13,6 @@ public class Blueprint_script : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(prefab.GetComponent<Building>());
 
         if (prefab.GetComponent<Building>() is RangeBuilding)
         {
@@ -77,7 +76,78 @@ public class Blueprint_script : MonoBehaviour
                 Structure s = g.GetComponent<Structure>();
                 s.x = (int)transform.position.x / GridManager.Instance.gridsize;
                 s.y = (int)transform.position.z / GridManager.Instance.gridsize;
-                GridManager.Instance.addToPosition(s.x, s.y, s);
+                if (s.width == 0)
+                {
+                    Debug.LogError("zapoměls nastavit velikost");
+                }
+                if (s.width == 1)
+                {
+                    GridManager.Instance.addToPosition(s.x, s.y, s);
+
+                }
+                if (s.width == 2)
+                {
+                    Debug.LogError("ne prostě ne");
+
+
+                }
+                if (s.width == 3)
+                {
+                    GridManager.Instance.addToPosition(s.x - 1, s.y - 1, s);
+                    GridManager.Instance.addToPosition(s.x - 1, s.y - 0, s);
+                    GridManager.Instance.addToPosition(s.x - 1, s.y + 1, s);
+
+                    GridManager.Instance.addToPosition(s.x + 0, s.y - 1, s);
+                    GridManager.Instance.addToPosition(s.x + 0, s.y - 0, s);
+                    GridManager.Instance.addToPosition(s.x + 0, s.y + 1, s);
+
+                    GridManager.Instance.addToPosition(s.x + 1, s.y - 1, s);
+                    GridManager.Instance.addToPosition(s.x + 1, s.y - 0, s);
+                    GridManager.Instance.addToPosition(s.x + 1, s.y + 1, s);
+
+
+                }
+                if (s.width == 5)
+                {
+                    GridManager.Instance.addToPosition(s.x - 2, s.y - 2, s);
+                    GridManager.Instance.addToPosition(s.x - 2, s.y - 1, s);
+                    GridManager.Instance.addToPosition(s.x - 2, s.y + 0, s);
+                    GridManager.Instance.addToPosition(s.x - 2, s.y + 1, s);
+                    GridManager.Instance.addToPosition(s.x - 2, s.y + 2, s);
+
+                    GridManager.Instance.addToPosition(s.x - 1, s.y - 2, s);
+                    GridManager.Instance.addToPosition(s.x - 1, s.y - 1, s);
+                    GridManager.Instance.addToPosition(s.x - 1, s.y + 0, s);
+                    GridManager.Instance.addToPosition(s.x - 1, s.y + 1, s);
+                    GridManager.Instance.addToPosition(s.x - 1, s.y + 2, s);
+
+                    GridManager.Instance.addToPosition(s.x - 0, s.y - 2, s);
+                    GridManager.Instance.addToPosition(s.x - 0, s.y - 1, s);
+                    GridManager.Instance.addToPosition(s.x - 0, s.y + 0, s);
+                    GridManager.Instance.addToPosition(s.x - 0, s.y + 1, s);
+                    GridManager.Instance.addToPosition(s.x - 0, s.y + 2, s);
+
+                    GridManager.Instance.addToPosition(s.x + 1, s.y - 2, s);
+                    GridManager.Instance.addToPosition(s.x + 1, s.y - 1, s);
+                    GridManager.Instance.addToPosition(s.x + 1, s.y + 0, s);
+                    GridManager.Instance.addToPosition(s.x + 1, s.y + 1, s);
+                    GridManager.Instance.addToPosition(s.x + 1, s.y + 2, s);
+
+                    GridManager.Instance.addToPosition(s.x + 2, s.y - 2, s);
+                    GridManager.Instance.addToPosition(s.x + 2, s.y - 1, s);
+                    GridManager.Instance.addToPosition(s.x + 2, s.y + 0, s);
+                    GridManager.Instance.addToPosition(s.x + 2, s.y + 1, s);
+                    GridManager.Instance.addToPosition(s.x + 2, s.y + 2, s);
+
+
+
+
+
+
+                }
+
+
+
                 //smoke
                 Instantiate(GameManager.Instance.placeSmoke, transform.position, new Quaternion());
                 foreach (Structure st in GridManager.Instance.g.gridArray)
@@ -87,7 +157,7 @@ public class Blueprint_script : MonoBehaviour
                         //st.kys();
                     }
                 }
-                //nont know why it doesnt work
+                //dont work
                 if (Input.GetKeyDown("left shift"))
                 {
                 }

@@ -36,7 +36,7 @@ public abstract class Building : Structure
     {
         base.Start();
 
-        gameObject.AddComponent<MeshCollider>();
+        gameObject.AddComponent<BoxCollider>();
         GridManager.Instance.beforeBuild.AddListener(clear);
         GridManager.Instance.afterRoadConnections.AddListener(set);
         GameManager.Instance.onDay.AddListener(onDay);

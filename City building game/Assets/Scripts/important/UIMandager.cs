@@ -61,7 +61,17 @@ public class UIMandager : MonoBehaviour
     public TextMeshProUGUI ConsumationLabel;
     public TextMeshProUGUI MapNameLabel;
 
+    public Slider ResidanceTaxSlider;
+    public Slider ComercialTaxSlider;
+    public Slider IndustrialTaxSlider;
 
+    public GameObject TaxWindow;
+    public Button exitTaxWindow;
+
+
+    public GameObject TownHallWindow;
+    public Button exitTownHallWindow;
+    public Button upgradeTownHallWindow;
 
 
 
@@ -81,9 +91,19 @@ public class UIMandager : MonoBehaviour
 
     void Start()
     {
+        exitTaxWindow.onClick.AddListener(closeTaxWindow);
+        ResidanceTaxSlider.onValueChanged.AddListener(MoveTaxSlider);
+        ComercialTaxSlider.onValueChanged.AddListener(MoveTaxSlider);
+        IndustrialTaxSlider.onValueChanged.AddListener(MoveTaxSlider);
+
+
+        exitTownHallWindow.onClick.AddListener(closeTownHallWindow);
+        upgradeTownHallWindow.onClick.AddListener(upgradeTownHall);
+
 
         DebugBtn.onClick.AddListener(GridManager.Instance.callEvents);
         TestBtn.onClick.AddListener(test);
+
 
         ChangeMapButtons[0].onClick.AddListener(delegate { MapManager.Instance.changeMap(MapManager.TypesOfMap.Original); });
         ChangeMapButtons[1].onClick.AddListener(delegate { MapManager.Instance.changeMap(MapManager.TypesOfMap.Power); });
@@ -100,6 +120,8 @@ public class UIMandager : MonoBehaviour
         moneyIncameLabelText = moneyIncameLabel.GetComponent<TextMeshProUGUI>();
         dateLabelText = dateLabel.GetComponent<TextMeshProUGUI>();
         moneyLabelText = moneyLabel.GetComponent<TextMeshProUGUI>();
+
+
 
 
 
@@ -129,17 +151,46 @@ public class UIMandager : MonoBehaviour
     {
         BottonBarAnimator.SetBool("show", !BottonBarAnimator.GetBool("show"));
         SidePanelAnimator.SetBool("show", !SidePanelAnimator.GetBool("show"));
+        NotificationManager.Instance.ShowNotification(NotificationManager.TypeOfNotification.kys);
+
 
     }
 
     void Update()
     {
+        if (Input.GetKeyDown("1"))
+        {
+            if (TaxWindow.activeSelf)
+            {
+                TaxWindow.SetActive(false);
 
+            }
+            else
+            {
+                TaxWindow.SetActive(true);
+
+            }
+
+        }
+        else if (Input.GetKeyDown("2"))
+        {
+            if (TownHallWindow.activeSelf)
+            {
+                TownHallWindow.SetActive(false);
+
+            }
+            else
+            {
+                TownHallWindow.SetActive(true);
+
+            }
+        }
     }
     public void updateLabels()
     {
         populationLabelText.text = GlobalVariables.population + "";
         dateLabelText.text = GlobalVariables.year + "/";
+
         if (GlobalVariables.month < 10)
         {
             dateLabelText.text += 0 + "" + GlobalVariables.month + "/";
@@ -159,6 +210,7 @@ public class UIMandager : MonoBehaviour
             dateLabelText.text += GlobalVariables.day;
         }
         moneyLabelText.text = GlobalVariables.money + "";
+        moneyIncameLabelText.text = GlobalVariables.moneyIncome + "";
         updateZoneBars();
         updateResourcesLabels();
 
@@ -189,9 +241,10 @@ public class UIMandager : MonoBehaviour
     private void updateZoneBars()
     {
 
-        ResidentialBar.transform.localScale = new Vector3(ResidentialBar.transform.localScale.x, 1f / 100 * GameManager.Instance.getZoneDemand().x, ResidentialBar.transform.localScale.z);
-        CommercialBar.transform.localScale = new Vector3(CommercialBar.transform.localScale.x, 1f / 100 * GameManager.Instance.getZoneDemand().y, CommercialBar.transform.localScale.z);
-        IndustrialBar.transform.localScale = new Vector3(IndustrialBar.transform.localScale.x, 1f / 100 * GameManager.Instance.getZoneDemand().z, IndustrialBar.transform.localScale.z);
+
+        ResidentialBar.transform.localScale = new Vector3(ResidentialBar.transform.localScale.x, 1f / 100 * (GameManager.Instance.getZoneDemand().x + 1), ResidentialBar.transform.localScale.z);
+        CommercialBar.transform.localScale = new Vector3(CommercialBar.transform.localScale.x, 1f / 100 * (GameManager.Instance.getZoneDemand().y + 1), CommercialBar.transform.localScale.z);
+        IndustrialBar.transform.localScale = new Vector3(IndustrialBar.transform.localScale.x, 1f / 100 * (GameManager.Instance.getZoneDemand().z + 1), IndustrialBar.transform.localScale.z);
 
     }
 
@@ -205,12 +258,16 @@ public class UIMandager : MonoBehaviour
             rangeEffect = Instantiate(rangeEffectCilinder, new Vector3(0, 0, 0), new Quaternion(0, 0, 0, 0));
             rangeEffect.transform.position = bl.gameObject.transform.position;
             rangeEffect.transform.localScale = new Vector3(((RangeBuilding)bl).range * 10, 1, ((RangeBuilding)bl).range * 10);
-            Debug.Log("range");
 
         }
         else if (bl is BasicBuilding)
         {
             BasicBuildingInfo((BasicBuilding)bl);
+
+        }
+        else if (bl is TownHall)
+        {
+            ((TownHall)bl).Upgrade();
 
         }
         else
@@ -226,8 +283,11 @@ public class UIMandager : MonoBehaviour
     }
     private void BasicBuildingInfo(BasicBuilding bb)
     {
-        bool[] info = bb.info();
+        string[] info = bb.info();
         BuildingInfoPanel.transform.Find("info").GetComponent<TextMeshProUGUI>().text = "";
+
+        BuildingInfoPanel.transform.Find("info").GetComponent<TextMeshProUGUI>().text += "population: " + info[7] + "/" + info[8] + " \u000a";
+
 
         BuildingInfoPanel.transform.Find("info").GetComponent<TextMeshProUGUI>().text += "Road: " + info[0] + " \u000a";
         BuildingInfoPanel.transform.Find("info").GetComponent<TextMeshProUGUI>().text += "Main connection: " + info[1] + " \u000a";
@@ -236,6 +296,9 @@ public class UIMandager : MonoBehaviour
         BuildingInfoPanel.transform.Find("info").GetComponent<TextMeshProUGUI>().text += "Police: " + info[4] + " \u000a";
         BuildingInfoPanel.transform.Find("info").GetComponent<TextMeshProUGUI>().text += "Fire: " + info[5] + " \u000a";
         BuildingInfoPanel.transform.Find("info").GetComponent<TextMeshProUGUI>().text += "Healthcare: " + info[6] + " \u000a";
+        BuildingInfoPanel.transform.Find("info").GetComponent<TextMeshProUGUI>().text += "Happines: " + info[9] + "/100 \u000a";
+
+
 
 
 
@@ -266,7 +329,7 @@ public class UIMandager : MonoBehaviour
         if (m == MapManager.TypesOfMap.Original)
         {
             MapInfo.SetActive(false);
-
+            return;
 
         }
         float prod = 0;
@@ -298,7 +361,6 @@ public class UIMandager : MonoBehaviour
         }
 
 
-        Debug.Log(GameManager.Instance.getResources()[0] + " , " + GameManager.Instance.getResources()[1]);
         if (prod / cons > 2)
         {
             IncomeBar.transform.localPosition = new Vector3(200, 8, 0);
@@ -325,6 +387,42 @@ public class UIMandager : MonoBehaviour
         MapInfo.SetActive(false);
 
         MapManager.Instance.changeMap(MapManager.TypesOfMap.Original);
+    }
+
+    public void MoveTaxSlider(float f)
+    {
+        float res = 0;
+        float com = 0;
+        float ind = 0;
+
+        res = ResidanceTaxSlider.value;
+        com = ComercialTaxSlider.value;
+        ind = IndustrialTaxSlider.value;
+
+
+        GameManager.Instance.setTaxes(res / 20, com / 20, ind / 20);
+
+
+
+
+    }
+    public void closeTaxWindow()
+    {
+        TaxWindow.SetActive(false);
+    }
+
+
+    public void closeTownHallWindow()
+    {
+        TownHallWindow.SetActive(false);
+    }
+
+    public void upgradeTownHall()
+    {
+        foreach (Structure s in GridManager.Instance.getTypeOfObject<TownHall>())
+        {
+            ((TownHall)s).Upgrade();
+        }
     }
 
 
